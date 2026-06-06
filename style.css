@@ -57,6 +57,10 @@ body {
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 a {
@@ -1117,6 +1121,8 @@ img, svg { display: block; max-width: 100%; }
     font-size: 0.9rem;
     transition: border-color var(--transition), box-shadow var(--transition);
     outline: none;
+    user-select: text;
+    -webkit-user-select: text;
 }
 
 .input-wrapper.textarea-wrapper { align-items: flex-start; }

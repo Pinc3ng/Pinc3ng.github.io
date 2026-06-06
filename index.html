@@ -3,28 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Personal Portfolio - Developer & Designer. Explore my projects, skills, and experience.">
-    <meta name="keywords" content="portfolio, developer, designer, web development, projects">
+    <meta name="description" content="Vincent — Informatics Engineering student at Pelita Harapan University. Building things for the web.">
+    <meta name="keywords" content="portfolio, developer, web development, Vincent, UPH">
     <meta name="author" content="Vincent">
-    <title>Vincent | Personal Portfolio</title>
+    <title>Vincent | Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=1.2">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Cursor Glow Effect -->
-    <div class="cursor-glow" id="cursorGlow"></div>
-
-    <!-- Particle Background -->
-    <canvas id="particleCanvas"></canvas>
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#home" class="nav-logo">
-                <span class="logo-first">Vincent</span><span class="logo-second">.blog</span><span class="logo-dot"></span>
+                <span class="logo-first">Vincent</span><span class="logo-second">.dev</span><span class="logo-dot"></span>
             </a>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
@@ -44,69 +39,43 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="hero-content">
-            <div class="hero-badge">
-                <span class="status-dot"></span>
-                Available for work
-            </div>
+        <div class="hero-container">
+            <p class="hero-eyebrow">Available for work &amp; collaboration</p>
             <h1 class="hero-title">
-                <span class="hero-greeting">Hi, I'm</span>
-                <span class="hero-name" id="typedName"></span>
-                <span class="hero-cursor">|</span>
+                <span class="name-line">Hi, I'm</span>
+                <span class="accent-name">Vincent.</span>
             </h1>
-            <p class="hero-subtitle">
-                <span class="gradient-text">Full-Stack Developer</span> & 
-                <span class="gradient-text-alt">UI/UX Designer</span>
-            </p>
-            <p class="hero-description">
-                I craft digital experiences that blend beautiful design with clean, 
-                efficient code. Let's build something amazing together.
+            <p class="hero-desc">
+                <strong>Informatics Engineering student</strong> at Pelita Harapan University — 
+                building clean, functional things for the web. I enjoy turning ideas into reality 
+                through code and thoughtful design.
             </p>
             <div class="hero-actions">
                 <a href="#projects" class="btn btn-primary" id="heroViewWork">
-                    <span>View My Work</span>
+                    <span>See my work</span>
                     <i class="fas fa-arrow-right"></i>
                 </a>
-                <a href="#contact" class="btn btn-outline" id="heroContact">
-                    <span>Get In Touch</span>
-                    <i class="fas fa-paper-plane"></i>
+                <a href="#contact" class="btn btn-ghost" id="heroContact">
+                    <span>Get in touch</span>
                 </a>
             </div>
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <span class="stat-number" data-target="3">0</span><span class="stat-suffix">+</span>
-                    <span class="stat-label">Years Experience</span>
+            <div class="hero-meta">
+                <div class="hero-meta-item">
+                    <span class="hero-meta-num"><span class="stat-number" data-target="3">0</span>+</span>
+                    <span class="hero-meta-label">Years learning</span>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-number" data-target="25">0</span><span class="stat-suffix">+</span>
-                    <span class="stat-label">Projects Completed</span>
+                <div class="hero-meta-item">
+                    <span class="hero-meta-num"><span class="stat-number" data-target="25">0</span>+</span>
+                    <span class="hero-meta-label">Projects built</span>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-number" data-target="15">0</span><span class="stat-suffix">+</span>
-                    <span class="stat-label">Happy Clients</span>
+                <div class="hero-meta-item">
+                    <span class="hero-meta-num">UPH</span>
+                    <span class="hero-meta-label">University</span>
                 </div>
-            </div>
-        </div>
-        <div class="hero-visual">
-            <div class="hero-image-wrapper">
-                <div class="hero-image-ring"></div>
-                <div class="hero-image-ring ring-2"></div>
-                <div class="hero-avatar">
-                    <div class="avatar-placeholder">
-                        <i class="fas fa-user"></i>
-                    </div>
-                </div>
-                <!-- Floating tech icons -->
-                <div class="floating-icon icon-1"><i class="fab fa-html5"></i></div>
-                <div class="floating-icon icon-2"><i class="fab fa-css3-alt"></i></div>
-                <div class="floating-icon icon-3"><i class="fab fa-js-square"></i></div>
-                <div class="floating-icon icon-4"><i class="fab fa-react"></i></div>
-                <div class="floating-icon icon-5"><i class="fab fa-node-js"></i></div>
-                <div class="floating-icon icon-6"><i class="fab fa-python"></i></div>
             </div>
         </div>
         <div class="scroll-indicator" id="scrollIndicator">
-            <span>Scroll Down</span>
+            <span>Scroll</span>
             <div class="scroll-arrow">
                 <i class="fas fa-chevron-down"></i>
             </div>
@@ -117,23 +86,39 @@
     <section class="section" id="about">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">&lt;about&gt;</span>
-                <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
-                <p class="section-subtitle">Get to know me better</p>
+                <span class="section-eyebrow">// about me</span>
+                <h2 class="section-title">A bit about <span class="accent">myself</span></h2>
             </div>
             <div class="about-grid">
-                <div class="about-image-col reveal-left">
-                    <div class="about-image-card">
-                        <div class="about-avatar-large">
-                            <i class="fas fa-code"></i>
+                <div class="about-sidebar reveal-left">
+                    <div class="about-avatar-card">
+                        <div class="about-avatar-icon">
+                            <i class="fas fa-user"></i>
                         </div>
-                        <div class="about-image-decoration"></div>
+                        <div class="about-avatar-name">Vincent</div>
+                        <div class="about-avatar-role">Informatics Engineering</div>
+                    </div>
+                    <div class="about-quick-info">
+                        <div class="about-info-row">
+                            <i class="fas fa-envelope"></i>
+                            <span class="about-info-label">Email</span>
+                            <span class="about-info-value">vinss37926@gmail.com</span>
+                        </div>
+                        <div class="about-info-row">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="about-info-label">Location</span>
+                            <span class="about-info-value">Indonesia</span>
+                        </div>
+                        <div class="about-info-row">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span class="about-info-label">Study</span>
+                            <span class="about-info-value">Pelita Harapan University</span>
+                        </div>
                     </div>
                 </div>
-                <div class="about-content-col reveal-right">
-                    <h3 class="about-heading">
-                        Informatics Engineering student at 
-                        <span class="gradient-text">Pelita Harapan University</span>
+                <div class="about-content reveal-right">
+                    <h3>
+                        Fifth-semester student with a <span class="accent">genuine interest</span> in tech
                     </h3>
                     <p class="about-text">
                         Hello, my name is Vincent, and I am currently a fifth-semester Informatics Engineering student at Pelita Harapan University (UPH). I have a strong interest in technology and continuously strive to improve my knowledge and skills in the field of information technology.
@@ -147,42 +132,9 @@
                     <p class="about-text">
                         Outside of academics, I enjoy listening to podcasts, which allow me to gain new perspectives and insights from various fields. Looking ahead, my long-term goal is to become a successful entrepreneur and create innovative solutions that can make a positive impact on society.
                     </p>
-                    <p class="about-text">
-                        Through this website, I would like to share my projects, experiences, and learning journey as I continue to develop my skills and pursue my aspirations in the technology industry.
-                    </p>
-                    <div class="about-info-grid">
-                        <div class="about-info-item">
-                            <i class="fas fa-user"></i>
-                            <div>
-                                <span class="info-label">Name</span>
-                                <span class="info-value">Vincent</span>
-                            </div>
-                        </div>
-                        <div class="about-info-item">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <span class="info-label">Email</span>
-                                <span class="info-value">vinss37926@gmail.com</span>
-                            </div>
-                        </div>
-                        <div class="about-info-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <span class="info-label">Location</span>
-                                <span class="info-value">Indonesia</span>
-                            </div>
-                        </div>
-                        <div class="about-info-item">
-                            <i class="fas fa-graduation-cap"></i>
-                            <div>
-                                <span class="info-label">Education</span>
-                                <span class="info-value">Universitas Pelita Harapan (UPH)</span>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#" class="btn btn-primary" id="downloadCv" download>
-                        <span>Download CV</span>
+                    <a href="#" class="btn btn-ghost" id="downloadCv" download>
                         <i class="fas fa-download"></i>
+                        <span>Download CV</span>
                     </a>
                 </div>
             </div>
@@ -193,11 +145,11 @@
     <section class="section section-alt" id="skills">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">&lt;skills&gt;</span>
-                <h2 class="section-title">My <span class="gradient-text">Skills</span></h2>
-                <p class="section-subtitle">Technologies and tools I work with</p>
+                <span class="section-eyebrow">// skills</span>
+                <h2 class="section-title">What I work <span class="accent">with</span></h2>
+                <p class="section-subtitle">Technologies and tools I use day-to-day</p>
             </div>
-            
+
             <div class="skills-tabs">
                 <button class="skill-tab active" data-tab="frontend" id="tabFrontend">Frontend</button>
                 <button class="skill-tab" data-tab="backend" id="tabBackend">Backend</button>
@@ -208,142 +160,46 @@
             <div class="skills-content">
                 <!-- Frontend -->
                 <div class="skills-panel active" id="frontend">
-                    <div class="skills-grid">
-                        <div class="skill-card reveal-up">
-                            <div class="skill-icon" style="--skill-color: #E44D26"><i class="fab fa-html5"></i></div>
-                            <h4>HTML5</h4>
-                            <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
-                        </div>
-                        <div class="skill-card reveal-up">
-                            <div class="skill-icon" style="--skill-color: #1572B6"><i class="fab fa-css3-alt"></i></div>
-                            <h4>CSS3</h4>
-                            <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
-                        </div>
-                        <div class="skill-card reveal-up">
-                            <div class="skill-icon" style="--skill-color: #F7DF1E"><i class="fab fa-js-square"></i></div>
-                            <h4>JavaScript</h4>
-                            <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
-                        </div>
-                        <div class="skill-card reveal-up">
-                            <div class="skill-icon" style="--skill-color: #61DAFB"><i class="fab fa-react"></i></div>
-                            <h4>React</h4>
-                            <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
-                        </div>
-                        <div class="skill-card reveal-up">
-                            <div class="skill-icon" style="--skill-color: #4FC08D"><i class="fab fa-vuejs"></i></div>
-                            <h4>Vue.js</h4>
-                            <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
-                        </div>
-                        <div class="skill-card reveal-up">
-                            <div class="skill-icon" style="--skill-color: #06B6D4"><i class="fab fa-css3"></i></div>
-                            <h4>Tailwind</h4>
-                            <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
-                        </div>
+                    <div class="skills-tag-grid">
+                        <div class="skill-tag-item reveal-up"><i class="fab fa-html5" style="color:#E44D26"></i> HTML5</div>
+                        <div class="skill-tag-item reveal-up"><i class="fab fa-css3-alt" style="color:#1572B6"></i> CSS3</div>
+                        <div class="skill-tag-item reveal-up"><i class="fab fa-js-square" style="color:#F7DF1E"></i> JavaScript</div>
+                        <div class="skill-tag-item reveal-up"><i class="fab fa-react" style="color:#61DAFB"></i> React</div>
+                        <div class="skill-tag-item reveal-up"><i class="fab fa-vuejs" style="color:#4FC08D"></i> Vue.js</div>
+                        <div class="skill-tag-item reveal-up"><i class="fas fa-wind" style="color:#06B6D4"></i> Tailwind CSS</div>
                     </div>
                 </div>
                 <!-- Backend -->
                 <div class="skills-panel" id="backend">
-                    <div class="skills-grid">
-                        <div class="skill-card reveal-up">
-                            <div class="skill-icon" style="--skill-color: #339933"><i class="fab fa-node-js"></i></div>
-                            <h4>Node.js</h4>
-                            <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
-                        </div>
-                        <div class="skill-card reveal-up">
-                            <div class="skill-icon" style="--skill-color: #3776AB"><i class="fab fa-python"></i></div>
-                            <h4>Python</h4>
-                            <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
-                        </div>
-                        <div class="skill-card reveal-up">
-                            <div class="skill-icon" style="--skill-color: #777BB4"><i class="fab fa-php"></i></div>
-                            <h4>PHP</h4>
-                            <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
-                        </div>
-                        <div class="skill-card reveal-up">
-                            <div class="skill-icon" style="--skill-color: #4479A1"><i class="fas fa-database"></i></div>
-                            <h4>MySQL</h4>
-                            <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
-                        </div>
-                        <div class="skill-card reveal-up">
-                            <div class="skill-icon" style="--skill-color: #47A248"><i class="fas fa-leaf"></i></div>
-                            <h4>MongoDB</h4>
-                            <div class="skill-bar"><div class="skill-fill" data-width="70"></div></div>
-                        </div>
-                        <div class="skill-card reveal-up">
-                            <div class="skill-icon" style="--skill-color: #FF6C37"><i class="fas fa-server"></i></div>
-                            <h4>REST API</h4>
-                            <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
-                        </div>
+                    <div class="skills-tag-grid">
+                        <div class="skill-tag-item reveal-up"><i class="fab fa-node-js" style="color:#339933"></i> Node.js</div>
+                        <div class="skill-tag-item reveal-up"><i class="fab fa-python" style="color:#3776AB"></i> Python</div>
+                        <div class="skill-tag-item reveal-up"><i class="fab fa-php" style="color:#777BB4"></i> PHP</div>
+                        <div class="skill-tag-item reveal-up"><i class="fas fa-database" style="color:#4479A1"></i> MySQL</div>
+                        <div class="skill-tag-item reveal-up"><i class="fas fa-leaf" style="color:#47A248"></i> MongoDB</div>
+                        <div class="skill-tag-item reveal-up"><i class="fas fa-server" style="color:#FF6C37"></i> REST API</div>
                     </div>
                 </div>
                 <!-- Tools -->
                 <div class="skills-panel" id="tools">
-                    <div class="skills-grid">
-                        <div class="skill-card reveal-up">
-                            <div class="skill-icon" style="--skill-color: #F05032"><i class="fab fa-git-alt"></i></div>
-                            <h4>Git</h4>
-                            <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
-                        </div>
-                        <div class="skill-card reveal-up">
-                            <div class="skill-icon" style="--skill-color: #2496ED"><i class="fab fa-docker"></i></div>
-                            <h4>Docker</h4>
-                            <div class="skill-bar"><div class="skill-fill" data-width="70"></div></div>
-                        </div>
-                        <div class="skill-card reveal-up">
-                            <div class="skill-icon" style="--skill-color: #FF9900"><i class="fab fa-aws"></i></div>
-                            <h4>AWS</h4>
-                            <div class="skill-bar"><div class="skill-fill" data-width="65"></div></div>
-                        </div>
-                        <div class="skill-card reveal-up">
-                            <div class="skill-icon" style="--skill-color: #F24E1E"><i class="fab fa-figma"></i></div>
-                            <h4>Figma</h4>
-                            <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
-                        </div>
-                        <div class="skill-card reveal-up">
-                            <div class="skill-icon" style="--skill-color: #007ACC"><i class="fas fa-code"></i></div>
-                            <h4>VS Code</h4>
-                            <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
-                        </div>
-                        <div class="skill-card reveal-up">
-                            <div class="skill-icon" style="--skill-color: #CB3837"><i class="fab fa-npm"></i></div>
-                            <h4>NPM</h4>
-                            <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
-                        </div>
+                    <div class="skills-tag-grid">
+                        <div class="skill-tag-item reveal-up"><i class="fab fa-git-alt" style="color:#F05032"></i> Git</div>
+                        <div class="skill-tag-item reveal-up"><i class="fab fa-github"></i> GitHub</div>
+                        <div class="skill-tag-item reveal-up"><i class="fab fa-docker" style="color:#2496ED"></i> Docker</div>
+                        <div class="skill-tag-item reveal-up"><i class="fab fa-figma" style="color:#F24E1E"></i> Figma</div>
+                        <div class="skill-tag-item reveal-up"><i class="fas fa-code" style="color:#007ACC"></i> VS Code</div>
+                        <div class="skill-tag-item reveal-up"><i class="fab fa-npm" style="color:#CB3837"></i> NPM</div>
                     </div>
                 </div>
                 <!-- Other -->
                 <div class="skills-panel" id="other">
-                    <div class="skills-grid">
-                        <div class="skill-card reveal-up">
-                            <div class="skill-icon" style="--skill-color: #FF6B6B"><i class="fas fa-paint-brush"></i></div>
-                            <h4>UI/UX Design</h4>
-                            <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
-                        </div>
-                        <div class="skill-card reveal-up">
-                            <div class="skill-icon" style="--skill-color: #4ECDC4"><i class="fas fa-mobile-alt"></i></div>
-                            <h4>Responsive</h4>
-                            <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
-                        </div>
-                        <div class="skill-card reveal-up">
-                            <div class="skill-icon" style="--skill-color: #FFE66D"><i class="fas fa-search"></i></div>
-                            <h4>SEO</h4>
-                            <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
-                        </div>
-                        <div class="skill-card reveal-up">
-                            <div class="skill-icon" style="--skill-color: #A78BFA"><i class="fas fa-users"></i></div>
-                            <h4>Team Work</h4>
-                            <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
-                        </div>
-                        <div class="skill-card reveal-up">
-                            <div class="skill-icon" style="--skill-color: #FB923C"><i class="fas fa-bolt"></i></div>
-                            <h4>Agile/Scrum</h4>
-                            <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
-                        </div>
-                        <div class="skill-card reveal-up">
-                            <div class="skill-icon" style="--skill-color: #34D399"><i class="fas fa-comments"></i></div>
-                            <h4>Communication</h4>
-                            <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
-                        </div>
+                    <div class="skills-tag-grid">
+                        <div class="skill-tag-item reveal-up"><i class="fas fa-paint-brush" style="color:#F59E0B"></i> UI/UX Design</div>
+                        <div class="skill-tag-item reveal-up"><i class="fas fa-mobile-alt"></i> Responsive Web</div>
+                        <div class="skill-tag-item reveal-up"><i class="fas fa-search"></i> SEO</div>
+                        <div class="skill-tag-item reveal-up"><i class="fas fa-users"></i> Teamwork</div>
+                        <div class="skill-tag-item reveal-up"><i class="fas fa-bolt"></i> Agile/Scrum</div>
+                        <div class="skill-tag-item reveal-up"><i class="fas fa-comments"></i> Communication</div>
                     </div>
                 </div>
             </div>
@@ -354,9 +210,9 @@
     <section class="section" id="projects">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">&lt;projects&gt;</span>
-                <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
-                <p class="section-subtitle">Some of my recent work</p>
+                <span class="section-eyebrow">// projects</span>
+                <h2 class="section-title">Things I've <span class="accent">built</span></h2>
+                <p class="section-subtitle">A selection of projects I've worked on</p>
             </div>
 
             <div class="project-filters">
@@ -520,9 +376,9 @@
     <section class="section section-alt" id="experience">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">&lt;experience&gt;</span>
-                <h2 class="section-title">My <span class="gradient-text">Journey</span></h2>
-                <p class="section-subtitle">Work experience & education</p>
+                <span class="section-eyebrow">// experience</span>
+                <h2 class="section-title">My <span class="accent">journey</span></h2>
+                <p class="section-subtitle">Work experience &amp; education</p>
             </div>
 
             <div class="experience-tabs">
@@ -537,46 +393,52 @@
             <div class="timeline-container">
                 <!-- Work Timeline -->
                 <div class="timeline active" id="workTimeline">
-                    <div class="timeline-item reveal-left">
-                        <div class="timeline-dot"></div>
+                    <div class="timeline-item reveal-up">
+                        <div class="timeline-date-col">
+                            <span class="timeline-date">2024 — Now</span>
+                        </div>
+                        <div class="timeline-line">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-line-seg"></div>
+                        </div>
                         <div class="timeline-card">
-                            <span class="timeline-date">2024 - Present</span>
                             <h3 class="timeline-title">Senior Developer</h3>
                             <h4 class="timeline-company">Company Name</h4>
-                            <p class="timeline-desc">
-                                Lead development of web applications, mentor junior developers,
-                                and architect scalable solutions for enterprise clients.
-                            </p>
+                            <p class="timeline-desc">Lead development of web applications, mentor junior developers, and architect scalable solutions for enterprise clients.</p>
                             <div class="timeline-tags">
                                 <span>React</span><span>Node.js</span><span>AWS</span>
                             </div>
                         </div>
                     </div>
-                    <div class="timeline-item reveal-right">
-                        <div class="timeline-dot"></div>
+                    <div class="timeline-item reveal-up">
+                        <div class="timeline-date-col">
+                            <span class="timeline-date">2022 — 2024</span>
+                        </div>
+                        <div class="timeline-line">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-line-seg"></div>
+                        </div>
                         <div class="timeline-card">
-                            <span class="timeline-date">2022 - 2024</span>
                             <h3 class="timeline-title">Full-Stack Developer</h3>
                             <h4 class="timeline-company">Company Name</h4>
-                            <p class="timeline-desc">
-                                Developed and maintained multiple web applications, 
-                                implemented CI/CD pipelines, and improved performance.
-                            </p>
+                            <p class="timeline-desc">Developed and maintained multiple web applications, implemented CI/CD pipelines, and improved performance.</p>
                             <div class="timeline-tags">
                                 <span>Vue.js</span><span>Python</span><span>Docker</span>
                             </div>
                         </div>
                     </div>
-                    <div class="timeline-item reveal-left">
-                        <div class="timeline-dot"></div>
+                    <div class="timeline-item reveal-up">
+                        <div class="timeline-date-col">
+                            <span class="timeline-date">2021 — 2022</span>
+                        </div>
+                        <div class="timeline-line">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-line-seg"></div>
+                        </div>
                         <div class="timeline-card">
-                            <span class="timeline-date">2021 - 2022</span>
                             <h3 class="timeline-title">Junior Developer</h3>
                             <h4 class="timeline-company">Company Name</h4>
-                            <p class="timeline-desc">
-                                Built responsive web interfaces, collaborated with design team,
-                                and learned best practices in software development.
-                            </p>
+                            <p class="timeline-desc">Built responsive web interfaces, collaborated with design team, and learned best practices in software development.</p>
                             <div class="timeline-tags">
                                 <span>HTML/CSS</span><span>JavaScript</span><span>PHP</span>
                             </div>
@@ -586,33 +448,37 @@
 
                 <!-- Education Timeline -->
                 <div class="timeline" id="educationTimeline">
-                    <div class="timeline-item reveal-left">
-                        <div class="timeline-dot"></div>
+                    <div class="timeline-item reveal-up">
+                        <div class="timeline-date-col">
+                            <span class="timeline-date">2023 — Now</span>
+                        </div>
+                        <div class="timeline-line">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-line-seg"></div>
+                        </div>
                         <div class="timeline-card">
-                            <span class="timeline-date">2020 - 2024</span>
-                            <h3 class="timeline-title">Bachelor of Computer Science</h3>
-                            <h4 class="timeline-company">University Name</h4>
-                            <p class="timeline-desc">
-                                Focused on software engineering and web technologies. 
-                                GPA: 3.8/4.0. Active in coding club and hackathons.
-                            </p>
+                            <h3 class="timeline-title">Informatics Engineering</h3>
+                            <h4 class="timeline-company">Universitas Pelita Harapan (UPH)</h4>
+                            <p class="timeline-desc">Currently in 5th semester. Focused on software engineering and web technologies. Active in various university projects including website development.</p>
                             <div class="timeline-tags">
                                 <span>Algorithms</span><span>Data Structures</span><span>Web Dev</span>
                             </div>
                         </div>
                     </div>
-                    <div class="timeline-item reveal-right">
-                        <div class="timeline-dot"></div>
+                    <div class="timeline-item reveal-up">
+                        <div class="timeline-date-col">
+                            <span class="timeline-date">2020 — 2023</span>
+                        </div>
+                        <div class="timeline-line">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-line-seg"></div>
+                        </div>
                         <div class="timeline-card">
-                            <span class="timeline-date">2019</span>
-                            <h3 class="timeline-title">Web Development Bootcamp</h3>
-                            <h4 class="timeline-company">Bootcamp Name</h4>
-                            <p class="timeline-desc">
-                                Intensive 12-week program covering full-stack development, 
-                                from frontend frameworks to backend architecture.
-                            </p>
+                            <h3 class="timeline-title">Senior High School</h3>
+                            <h4 class="timeline-company">SMA / SMK</h4>
+                            <p class="timeline-desc">Graduated and developed early interest in computers and technology, which led to pursuing Informatics Engineering.</p>
                             <div class="timeline-tags">
-                                <span>Full-Stack</span><span>JavaScript</span><span>React</span>
+                                <span>Mathematics</span><span>Computer Science</span>
                             </div>
                         </div>
                     </div>
@@ -621,69 +487,56 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="section" id="testimonials">
+    <!-- Certificates / Achievements Section -->
+    <section class="section" id="certificates">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">&lt;testimonials&gt;</span>
-                <h2 class="section-title">What People <span class="gradient-text">Say</span></h2>
-                <p class="section-subtitle">Feedback from clients and colleagues</p>
+                <span class="section-eyebrow">// achievements</span>
+                <h2 class="section-title">Certificates &amp; <span class="accent">achievements</span></h2>
+                <p class="section-subtitle">Courses, certifications, and recognitions</p>
             </div>
-            <div class="testimonials-slider">
-                <div class="testimonial-track" id="testimonialTrack">
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p class="testimonial-text">
-                            "Amazing developer! Delivered the project on time with excellent quality. 
-                            Communication was great throughout the entire process."
-                        </p>
-                        <div class="testimonial-author">
-                            <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
-                            <div>
-                                <h4>Client Name</h4>
-                                <span>CEO, Company</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p class="testimonial-text">
-                            "Exceptional work and attention to detail. The website exceeded our 
-                            expectations and the code quality was outstanding."
-                        </p>
-                        <div class="testimonial-author">
-                            <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
-                            <div>
-                                <h4>Client Name</h4>
-                                <span>CTO, Startup</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p class="testimonial-text">
-                            "A truly talented developer who understands both design and code. 
-                            Our project was in great hands from start to finish."
-                        </p>
-                        <div class="testimonial-author">
-                            <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
-                            <div>
-                                <h4>Client Name</h4>
-                                <span>Product Manager</span>
-                            </div>
-                        </div>
-                    </div>
+            <div class="certs-grid">
+                <div class="cert-card reveal-up">
+                    <div class="cert-icon"><i class="fab fa-google"></i></div>
+                    <div class="cert-title">Google IT Support Professional Certificate</div>
+                    <div class="cert-issuer">Google / Coursera</div>
+                    <p class="cert-desc">Comprehensive IT support fundamentals including troubleshooting, networking, and system administration.</p>
+                    <span class="cert-year">2024</span>
                 </div>
-                <div class="testimonial-controls">
-                    <button class="test-btn" id="testPrev"><i class="fas fa-chevron-left"></i></button>
-                    <div class="testimonial-dots" id="testimonialDots"></div>
-                    <button class="test-btn" id="testNext"><i class="fas fa-chevron-right"></i></button>
+                <div class="cert-card reveal-up">
+                    <div class="cert-icon"><i class="fas fa-database"></i></div>
+                    <div class="cert-title">SQL for Data Science</div>
+                    <div class="cert-issuer">UC Davis / Coursera</div>
+                    <p class="cert-desc">Hands-on SQL fundamentals covering queries, data manipulation, and database design principles.</p>
+                    <span class="cert-year">2024</span>
+                </div>
+                <div class="cert-card reveal-up">
+                    <div class="cert-icon"><i class="fab fa-js"></i></div>
+                    <div class="cert-title">JavaScript Algorithms and Data Structures</div>
+                    <div class="cert-issuer">freeCodeCamp</div>
+                    <p class="cert-desc">300+ hours of JavaScript fundamentals, ES6, regex, debugging, data structures, and algorithm scripting.</p>
+                    <span class="cert-year">2023</span>
+                </div>
+                <div class="cert-card reveal-up">
+                    <div class="cert-icon"><i class="fas fa-code"></i></div>
+                    <div class="cert-title">Responsive Web Design</div>
+                    <div class="cert-issuer">freeCodeCamp</div>
+                    <p class="cert-desc">HTML, CSS, flexbox, grid, and accessibility fundamentals through 300+ hours of coursework.</p>
+                    <span class="cert-year">2023</span>
+                </div>
+                <div class="cert-card reveal-up">
+                    <div class="cert-icon"><i class="fab fa-react"></i></div>
+                    <div class="cert-title">React — The Complete Guide</div>
+                    <div class="cert-issuer">Udemy</div>
+                    <p class="cert-desc">Deep dive into React including hooks, context API, Redux, and building full-stack apps.</p>
+                    <span class="cert-year">2023</span>
+                </div>
+                <div class="cert-card reveal-up">
+                    <div class="cert-icon"><i class="fas fa-trophy"></i></div>
+                    <div class="cert-title">University Web Development Project</div>
+                    <div class="cert-issuer">Universitas Pelita Harapan</div>
+                    <p class="cert-desc">Completed a full-stack web application project as part of the software engineering coursework.</p>
+                    <span class="cert-year">2024</span>
                 </div>
             </div>
         </div>
@@ -693,15 +546,15 @@
     <section class="section section-alt" id="contact">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">&lt;contact&gt;</span>
-                <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
-                <p class="section-subtitle">Let's work together on your next project</p>
+                <span class="section-eyebrow">// contact</span>
+                <h2 class="section-title">Get in <span class="accent">touch</span></h2>
+                <p class="section-subtitle">Let's work together on something great</p>
             </div>
             <div class="contact-grid">
                 <div class="contact-info reveal-left">
                     <h3>Let's talk about your project</h3>
                     <p>Feel free to reach out. I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
-                    
+
                     <div class="contact-cards">
                         <div class="contact-card">
                             <div class="contact-card-icon"><i class="fas fa-envelope"></i></div>
@@ -731,7 +584,6 @@
                         <a href="#" class="social-link" id="socialLinkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="social-link" id="socialInstagram" title="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="#" class="social-link" id="socialTwitter" title="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link" id="socialDribbble" title="Dribbble"><i class="fab fa-dribbble"></i></a>
                     </div>
                 </div>
                 <div class="contact-form-wrapper reveal-right">
@@ -780,28 +632,19 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <a href="#home" class="nav-logo">
-                        <span class="logo-first">Vincent</span><span class="logo-second">.blog</span><span class="logo-dot"></span>
+                        <span class="logo-first">Vincent</span><span class="logo-second">.dev</span><span class="logo-dot"></span>
                     </a>
-                    <p>Crafting digital experiences with passion and precision.</p>
+                    <p>Building things for the web, one line at a time.</p>
                 </div>
                 <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <a href="#home">Home</a>
                     <a href="#about">About</a>
                     <a href="#projects">Projects</a>
                     <a href="#contact">Contact</a>
                 </div>
-                <div class="footer-links">
-                    <h4>Connect</h4>
-                    <a href="#">GitHub</a>
-                    <a href="#">LinkedIn</a>
-                    <a href="#">Instagram</a>
-                    <a href="#">Twitter</a>
-                </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 <span class="gradient-text">Vincent</span>. All rights reserved.</p>
-                <p>Designed & Built with <i class="fas fa-heart" style="color: #ff6b6b"></i></p>
+                <p>&copy; 2026 Vincent. All rights reserved.</p>
+                <p>Designed &amp; built with <i class="fas fa-heart" style="color: var(--accent)"></i></p>
             </div>
         </div>
     </footer>

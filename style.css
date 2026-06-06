@@ -427,8 +427,29 @@ img, svg { display: block; max-width: 100%; }
 .btn-full { width: 100%; justify-content: center; }
 
 /* ==========================================
-   SECTION BASE
+   SECTION BASE & PAGE HEADER
    ========================================== */
+.page-header {
+    padding: calc(var(--nav-height) + 60px) 0 40px;
+    background: linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 100%);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+}
+
+.page-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 12px;
+}
+
+.page-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+}
+
 .section { padding: 100px 0; }
 .section-alt { background: var(--bg-2); }
 

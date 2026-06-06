@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Experience — Vincent's work history and education.">
+    <title>Vincent | Experience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-first">Vincent</span><span class="logo-second">.dev</span><span class="logo-dot"></span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html"      class="nav-link">Home</a></li>
+                <li><a href="about.html"      class="nav-link">About</a></li>
+                <li><a href="skills.html"     class="nav-link">Skills</a></li>
+                <li><a href="projects.html"   class="nav-link">Projects</a></li>
+                <li><a href="experience.html" class="nav-link active">Experience</a></li>
+                <li><a href="contact.html"    class="nav-link">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="container">
+            <span class="section-eyebrow">// experience</span>
+            <h1 class="page-title">My <span class="accent">journey</span></h1>
+            <p class="page-subtitle">Work experience &amp; education</p>
+        </div>
+    </div>
+
+    <section class="section">
+        <div class="container">
+            <div class="experience-tabs">
+                <button class="exp-tab active" data-exp="work" id="tabWork">
+                    <i class="fas fa-briefcase"></i> Work
+                </button>
+                <button class="exp-tab" data-exp="education" id="tabEducation">
+                    <i class="fas fa-graduation-cap"></i> Education
+                </button>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline active" id="workTimeline">
+                    <div class="timeline-item reveal-up">
+                        <div class="timeline-date-col"><span class="timeline-date">2024 — Now</span></div>
+                        <div class="timeline-line">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-line-seg"></div>
+                        </div>
+                        <div class="timeline-card">
+                            <h3 class="timeline-title">Senior Developer</h3>
+                            <h4 class="timeline-company">Company Name</h4>
+                            <p class="timeline-desc">Lead development of web applications, mentor junior developers, and architect scalable solutions for enterprise clients.</p>
+                            <div class="timeline-tags"><span>React</span><span>Node.js</span><span>AWS</span></div>
+                        </div>
+                    </div>
+                    <div class="timeline-item reveal-up">
+                        <div class="timeline-date-col"><span class="timeline-date">2022 — 2024</span></div>
+                        <div class="timeline-line">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-line-seg"></div>
+                        </div>
+                        <div class="timeline-card">
+                            <h3 class="timeline-title">Full-Stack Developer</h3>
+                            <h4 class="timeline-company">Company Name</h4>
+                            <p class="timeline-desc">Developed and maintained multiple web applications, implemented CI/CD pipelines, and improved performance.</p>
+                            <div class="timeline-tags"><span>Vue.js</span><span>Python</span><span>Docker</span></div>
+                        </div>
+                    </div>
+                    <div class="timeline-item reveal-up">
+                        <div class="timeline-date-col"><span class="timeline-date">2021 — 2022</span></div>
+                        <div class="timeline-line">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-line-seg"></div>
+                        </div>
+                        <div class="timeline-card">
+                            <h3 class="timeline-title">Junior Developer</h3>
+                            <h4 class="timeline-company">Company Name</h4>
+                            <p class="timeline-desc">Built responsive web interfaces, collaborated with design team, and learned best practices in software development.</p>
+                            <div class="timeline-tags"><span>HTML/CSS</span><span>JavaScript</span><span>PHP</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline" id="educationTimeline">
+                    <div class="timeline-item reveal-up">
+                        <div class="timeline-date-col"><span class="timeline-date">2023 — Now</span></div>
+                        <div class="timeline-line">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-line-seg"></div>
+                        </div>
+                        <div class="timeline-card">
+                            <h3 class="timeline-title">Informatics Engineering</h3>
+                            <h4 class="timeline-company">Universitas Pelita Harapan (UPH)</h4>
+                            <p class="timeline-desc">Currently in 5th semester. Focused on software engineering and web technologies. Active in various university projects including website development.</p>
+                            <div class="timeline-tags"><span>Algorithms</span><span>Data Structures</span><span>Web Dev</span></div>
+                        </div>
+                    </div>
+                    <div class="timeline-item reveal-up">
+                        <div class="timeline-date-col"><span class="timeline-date">2020 — 2023</span></div>
+                        <div class="timeline-line">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-line-seg"></div>
+                        </div>
+                        <div class="timeline-card">
+                            <h3 class="timeline-title">Senior High School</h3>
+                            <h4 class="timeline-company">SMA / SMK</h4>
+                            <p class="timeline-desc">Graduated and developed early interest in computers and technology, which led to pursuing Informatics Engineering.</p>
+                            <div class="timeline-tags"><span>Mathematics</span><span>Computer Science</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow">// achievements</span>
+                <h2 class="section-title">Certificates &amp; <span class="accent">achievements</span></h2>
+            </div>
+            <div class="certs-grid">
+                <div class="cert-card reveal-up">
+                    <div class="cert-icon"><i class="fab fa-google"></i></div>
+                    <div class="cert-title">Google IT Support Professional Certificate</div>
+                    <div class="cert-issuer">Google / Coursera</div>
+                    <p class="cert-desc">Comprehensive IT support fundamentals including troubleshooting, networking, and system administration.</p>
+                    <span class="cert-year">2024</span>
+                </div>
+                <div class="cert-card reveal-up">
+                    <div class="cert-icon"><i class="fas fa-database"></i></div>
+                    <div class="cert-title">SQL for Data Science</div>
+                    <div class="cert-issuer">UC Davis / Coursera</div>
+                    <p class="cert-desc">Hands-on SQL fundamentals covering queries, data manipulation, and database design principles.</p>
+                    <span class="cert-year">2024</span>
+                </div>
+                <div class="cert-card reveal-up">
+                    <div class="cert-icon"><i class="fab fa-js"></i></div>
+                    <div class="cert-title">JavaScript Algorithms and Data Structures</div>
+                    <div class="cert-issuer">freeCodeCamp</div>
+                    <p class="cert-desc">300+ hours of JavaScript fundamentals, ES6, regex, debugging, data structures, and algorithm scripting.</p>
+                    <span class="cert-year">2023</span>
+                </div>
+                <div class="cert-card reveal-up">
+                    <div class="cert-icon"><i class="fas fa-code"></i></div>
+                    <div class="cert-title">Responsive Web Design</div>
+                    <div class="cert-issuer">freeCodeCamp</div>
+                    <p class="cert-desc">HTML, CSS, flexbox, grid, and accessibility fundamentals through 300+ hours of coursework.</p>
+                    <span class="cert-year">2023</span>
+                </div>
+                <div class="cert-card reveal-up">
+                    <div class="cert-icon"><i class="fab fa-react"></i></div>
+                    <div class="cert-title">React — The Complete Guide</div>
+                    <div class="cert-issuer">Udemy</div>
+                    <p class="cert-desc">Deep dive into React including hooks, context API, Redux, and building full-stack apps.</p>
+                    <span class="cert-year">2023</span>
+                </div>
+                <div class="cert-card reveal-up">
+                    <div class="cert-icon"><i class="fas fa-trophy"></i></div>
+                    <div class="cert-title">University Web Development Project</div>
+                    <div class="cert-issuer">Universitas Pelita Harapan</div>
+                    <p class="cert-desc">Completed a full-stack web application project as part of the software engineering coursework.</p>
+                    <span class="cert-year">2024</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="nav-logo">
+                        <span class="logo-first">Vincent</span><span class="logo-second">.dev</span><span class="logo-dot"></span>
+                    </a>
+                    <p>Building things for the web, one line at a time.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="about.html">About</a>
+                    <a href="projects.html">Projects</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Vincent. All rights reserved.</p>
+                <p>Designed &amp; built with <i class="fas fa-heart" style="color: var(--accent)"></i></p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>

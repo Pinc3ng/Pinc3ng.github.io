@@ -40,13 +40,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const height = section.offsetHeight;
             const id = section.getAttribute('id');
 
-            if (scrollY >= top && scrollY < top + height) {
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('data-section') === id) {
-                        link.classList.add('active');
-                    }
-                });
+            if (id && scrollY >= top && scrollY < top + height) {
+                const hasMatchingLink = Array.from(navLinks).some(link => link.getAttribute('data-section') === id);
+                if (hasMatchingLink) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('data-section') === id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
             }
         });
     }

@@ -226,33 +226,185 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================
-    // CONTACT FORM
+    // CONTACT FORM & OTP VERIFICATION (FRONTEND ONLY)
     // ==========================================
     const contactForm = document.getElementById('contactForm');
+    const otpForm = document.getElementById('otpForm');
+    const otpSentEmail = document.getElementById('otpSentEmail');
+    const backToFormBtn = document.getElementById('backToFormBtn');
+    
+    // Store data temporarily between steps
+    let generatedOtp = null;
+    let pendingFormData = null;
 
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+    // Initialize EmailJS
+    if (typeof emailjs !== 'undefined') {
+        emailjs.init("8WICibyAmSJJPRE7l");
+    }
 
-        const submitBtn = contactForm.querySelector('button[type="submit"]');
-        const originalContent = submitBtn.innerHTML;
+    if (contactForm && otpForm) {
+        // Handle contact form submission (Generates and sends OTP)
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
 
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-        submitBtn.disabled = true;
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalContent = submitBtn.innerHTML;
 
-        setTimeout(() => {
-            submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-            submitBtn.style.background = '#22c55e';
-            submitBtn.style.color = '#fff';
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending Code...';
+            submitBtn.disabled = true;
 
-            setTimeout(() => {
-                submitBtn.innerHTML = originalContent;
-                submitBtn.style.background = '';
-                submitBtn.style.color = '';
-                submitBtn.disabled = false;
-                contactForm.reset();
-            }, 3000);
-        }, 1500);
-    });
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Generate 6-digit OTP locally
+            generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
+            
+            // Save form data for later
+            pendingFormData = { name, email, message };
+
+            // Send OTP via EmailJS
+            emailjs.send("service_hsy4kz2", "template_kkcx5ol", {
+                to_email: email,
+                otp_code: generatedOtp
+            })
+            .then(function(response) {
+                console.log("EmailJS Success:", response.status, response.text);
+                if (otpSentEmail) {
+                    otpSentEmail.textContent = email;
+                }
+                
+                // Switch to OTP form
+                contactForm.style.display = 'none';
+                otpForm.style.display = 'block';
+                document.getElementById('otpCode').value = '';
+                
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Code Sent!',
+                    text: 'Please check your email for the 6-digit verification code.',
+                    background: '#1a1a1a',
+                    color: '#fff',
+                    confirmButtonColor: '#6366f1'
+                });
+            }, function(error) {
+                console.error("EmailJS Error:", error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Failed to send verification email. Please try again.',
+                    background: '#1a1a1a',
+                    color: '#fff',
+                    confirmButtonColor: '#6366f1'
+                });
+                submitBtn.innerHTML = '<i class="fas fa-times"></i> Failed to Send';
+                submitBtn.style.background = '#ef4444';
+            })
+            .finally(() => {
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalContent;
+                    submitBtn.style.background = '';
+                    submitBtn.disabled = false;
+                }, 2000);
+            });
+        });
+
+        // Handle OTP verification and final form submission
+        otpForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const submitBtn = otpForm.querySelector('button[type="submit"]');
+            const originalContent = submitBtn.innerHTML;
+
+            const otpCode = document.getElementById('otpCode').value;
+
+            if (otpCode !== generatedOtp) {
+                submitBtn.innerHTML = '<i class="fas fa-times"></i> Invalid Code';
+                submitBtn.style.background = '#ef4444';
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalContent;
+                    submitBtn.style.background = '';
+                }, 2000);
+                return;
+            }
+
+            // OTP matches! Submit data to FormSubmit
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            submitBtn.disabled = true;
+
+            fetch('https://formsubmit.co/ajax/vinss37926@gmail.com', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: pendingFormData.name,
+                    email: pendingFormData.email,
+                    message: pendingFormData.message,
+                    _subject: `New Portfolio Contact from ${pendingFormData.name}`
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Message Sent!',
+                        text: 'Your email has been verified and message delivered successfully.',
+                        background: '#1a1a1a',
+                        color: '#fff',
+                        confirmButtonColor: '#22c55e'
+                    });
+                    
+                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Verified & Sent!';
+                    submitBtn.style.background = '#22c55e';
+                    
+                    // Reset everything
+                    contactForm.reset();
+                    otpForm.reset();
+                    generatedOtp = null;
+                    pendingFormData = null;
+
+                    setTimeout(() => {
+                        otpForm.style.display = 'none';
+                        contactForm.style.display = 'block';
+                    }, 2500);
+                } else {
+                    throw new Error("FormSubmit failed");
+                }
+            })
+            .catch(error => {
+                console.error('Error submitting to FormSubmit:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Submission Failed',
+                    text: 'Email verified, but failed to deliver the message.',
+                    background: '#1a1a1a',
+                    color: '#fff'
+                });
+                submitBtn.innerHTML = '<i class="fas fa-times"></i> Error Occurred';
+                submitBtn.style.background = '#ef4444';
+            })
+            .finally(() => {
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalContent;
+                    submitBtn.style.background = '';
+                    submitBtn.disabled = false;
+                }, 2500);
+            });
+        });
+
+        // Handle back button on OTP form
+        if (backToFormBtn) {
+            backToFormBtn.addEventListener('click', () => {
+                otpForm.style.display = 'none';
+                contactForm.style.display = 'block';
+                generatedOtp = null;
+                pendingFormData = null;
+            });
+        }
+    }
 
     // ==========================================
     // SMOOTH SCROLL

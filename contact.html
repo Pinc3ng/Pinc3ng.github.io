@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style-v4.css">
+    <link rel="stylesheet" href="style-v5.css">
 </head>
 <body>
 
@@ -81,6 +81,7 @@
                 </div>
 
                 <div class="contact-form-wrapper reveal-right">
+                    <!-- Contact Form -->
                     <form class="contact-form" id="contactForm">
                         <div class="form-group">
                             <label for="name">Name</label>
@@ -106,6 +107,28 @@
                         <button type="submit" class="btn btn-primary btn-full">
                             <span>Send Message</span>
                             <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+
+                    <!-- OTP Form (Hidden by default) -->
+                    <form class="contact-form" id="otpForm" style="display: none;">
+                        <h3 style="margin-bottom: 10px; color: var(--text-color);">Verify Your Email</h3>
+                        <p style="margin-bottom: 20px; font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">
+                            We've sent a 6-digit verification code to <strong id="otpSentEmail" style="color: var(--accent);"></strong>. Please enter the code below to confirm and send your message.
+                        </p>
+                        <div class="form-group">
+                            <label for="otpCode">Verification Code</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-key"></i>
+                                <input type="text" id="otpCode" placeholder="Enter 6-digit OTP" maxlength="6" pattern="\d{6}" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <span>Verify & Confirm Message</span>
+                            <i class="fas fa-check-circle"></i>
+                        </button>
+                        <button type="button" class="btn btn-secondary btn-full" id="backToFormBtn" style="margin-top: 10px; background: transparent; border: 1px solid var(--border-color, #333); color: var(--text-color);">
+                            <span>Back</span>
                         </button>
                     </form>
                 </div>
@@ -139,6 +162,8 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="script.js"></script>
 </body>
 </html>

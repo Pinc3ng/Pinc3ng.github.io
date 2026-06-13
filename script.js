@@ -244,18 +244,81 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (contactForm && otpForm) {
         // Handle contact form submission (Generates and sends OTP)
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             const originalContent = submitBtn.innerHTML;
 
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending Code...';
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Checking Email...';
             submitBtn.disabled = true;
 
             const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
+            const email = document.getElementById('email').value.trim();
             const message = document.getElementById('message').value;
+
+            // 1. Basic format validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Email Tidak Valid',
+                    text: 'Format email yang Anda masukkan salah.',
+                    background: '#1a1a1a',
+                    color: '#fff',
+                    confirmButtonColor: '#ef4444'
+                });
+                submitBtn.innerHTML = originalContent;
+                submitBtn.disabled = false;
+                return;
+            }
+
+            // 2. Blacklist of temporary/disposable email domains
+            const disposableDomains = [
+                'mailinator.com', '10minutemail.com', 'tempmail.com', 'temp-mail.org',
+                'yopmail.com', 'guerrillamail.com', 'sharklasers.com', 'dispostable.com',
+                'getairmail.com', 'maildrop.cc', 'tempmailaddress.com'
+            ];
+            const domain = email.split('@')[1].toLowerCase();
+            if (disposableDomains.includes(domain)) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Email Tidak Tersedia',
+                    text: 'Penggunaan email temporary/disposable tidak diizinkan.',
+                    background: '#1a1a1a',
+                    color: '#fff',
+                    confirmButtonColor: '#ef4444'
+                });
+                submitBtn.innerHTML = originalContent;
+                submitBtn.disabled = false;
+                return;
+            }
+
+            // 3. DNS MX Record check (checks if domain actually has mail servers)
+            try {
+                const dnsResponse = await fetch(`https://cloudflare-dns.com/dns-query?name=${domain}&type=MX`, {
+                    headers: { 'accept': 'application/dns-json' }
+                });
+                const dnsData = await dnsResponse.json();
+                
+                if (!dnsData.Answer || dnsData.Answer.length === 0) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Email Tidak Tersedia',
+                        text: 'Domain email tidak terdaftar atau tidak dapat menerima pesan.',
+                        background: '#1a1a1a',
+                        color: '#fff',
+                        confirmButtonColor: '#ef4444'
+                    });
+                    submitBtn.innerHTML = originalContent;
+                    submitBtn.disabled = false;
+                    return;
+                }
+            } catch (error) {
+                console.warn('DNS validation failed, bypassing to prevent blocking users:', error);
+            }
+
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending Code...';
 
             // Generate 6-digit OTP locally
             generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();

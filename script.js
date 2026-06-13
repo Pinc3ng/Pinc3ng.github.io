@@ -262,8 +262,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!emailRegex.test(email)) {
                 Swal.fire({
                     icon: 'error',
-                    title: 'Email Tidak Valid',
-                    text: 'Format email yang Anda masukkan salah.',
+                    title: 'Invalid Email',
+                    text: 'The email format you entered is incorrect.',
                     background: '#1a1a1a',
                     color: '#fff',
                     confirmButtonColor: '#ef4444'
@@ -283,8 +283,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (disposableDomains.includes(domain)) {
                 Swal.fire({
                     icon: 'error',
-                    title: 'Email Tidak Tersedia',
-                    text: 'Penggunaan email temporary/disposable tidak diizinkan.',
+                    title: 'Email Unavailable',
+                    text: 'Disposable or temporary email addresses are not allowed.',
                     background: '#1a1a1a',
                     color: '#fff',
                     confirmButtonColor: '#ef4444'
@@ -304,8 +304,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!dnsData.Answer || dnsData.Answer.length === 0) {
                     Swal.fire({
                         icon: 'error',
-                        title: 'Email Tidak Tersedia',
-                        text: 'Domain email tidak terdaftar atau tidak dapat menerima pesan.',
+                        title: 'Email Unavailable',
+                        text: 'The email domain is not registered or cannot receive messages.',
                         background: '#1a1a1a',
                         color: '#fff',
                         confirmButtonColor: '#ef4444'

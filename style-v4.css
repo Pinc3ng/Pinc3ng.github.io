@@ -388,6 +388,54 @@ body::after {
     text-transform: uppercase;
 }
 
+/* Hero Content Grid */
+.hero-content-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 48px;
+    align-items: center;
+}
+
+.hero-image-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image-wrapper {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid rgba(245, 158, 11, 0.3);
+    box-shadow: 0 0 50px rgba(245, 158, 11, 0.2);
+    background: var(--bg-card);
+    transition: all var(--transition);
+}
+
+.hero-image-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 30%, rgba(3, 0, 20, 0.4) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hero-image-wrapper:hover {
+    transform: scale(1.03) translateY(-5px);
+    border-color: rgba(245, 158, 11, 0.5);
+    box-shadow: 0 0 60px rgba(245, 158, 11, 0.35);
+}
+
+.hero-profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
 /* Scroll indicator */
 .scroll-indicator {
     position: absolute;
@@ -667,6 +715,25 @@ body::after {
     height: 150px;
     background: radial-gradient(circle, var(--accent-glow), transparent 70%);
     pointer-events: none;
+}
+
+.about-avatar-img-container {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    border: 3px solid rgba(245, 158, 11, 0.3);
+    box-shadow: 0 0 32px rgba(245, 158, 11, 0.2);
+    overflow: hidden;
+    position: relative;
+    background: var(--bg-card);
+}
+
+.about-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
 }
 
 .about-avatar-icon {
@@ -1443,6 +1510,21 @@ body::after {
    RESPONSIVE LAYOUTS
    ========================================== */
 @media (max-width: 992px) {
+    .hero-content-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    
+    .hero-image-content {
+        order: -1;
+        justify-content: flex-start;
+    }
+    
+    .hero-image-wrapper {
+        width: 220px;
+        height: 220px;
+    }
+
     .about-grid {
         grid-template-columns: 1fr;
         gap: 48px;

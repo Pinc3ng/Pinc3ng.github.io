@@ -1595,6 +1595,7 @@ body::after {
     
     .timeline-item {
         grid-template-columns: 1px 1fr;
+        grid-template-rows: auto auto;
         gap: 0 18px;
     }
 
@@ -1604,7 +1605,7 @@ body::after {
     }
 
     .timeline-date-col {
-        display: block;
+        display: block !important;
         grid-column: 2;
         grid-row: 1;
         text-align: left;

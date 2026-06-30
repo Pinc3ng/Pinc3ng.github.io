@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const otpForm = document.getElementById('otpForm');
     const otpSentEmail = document.getElementById('otpSentEmail');
     const backToFormBtn = document.getElementById('backToFormBtn');
-    
+
     // Store data temporarily between steps
     let generatedOtp = null;
     let pendingFormData = null;
@@ -300,7 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     headers: { 'accept': 'application/dns-json' }
                 });
                 const dnsData = await dnsResponse.json();
-                
+
                 if (!dnsData.Answer || dnsData.Answer.length === 0) {
                     Swal.fire({
                         icon: 'error',
@@ -322,7 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Generate 6-digit OTP locally
             generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
-            
+
             // Save form data for later
             pendingFormData = { name, email, message };
 
@@ -331,45 +331,45 @@ document.addEventListener('DOMContentLoaded', () => {
                 to_email: email,
                 otp_code: generatedOtp
             })
-            .then(function(response) {
-                console.log("EmailJS Success:", response.status, response.text);
-                if (otpSentEmail) {
-                    otpSentEmail.textContent = email;
-                }
-                
-                // Switch to OTP form
-                contactForm.style.display = 'none';
-                otpForm.style.display = 'block';
-                document.getElementById('otpCode').value = '';
-                
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Code Sent!',
-                    text: 'Please check your email for the 6-digit verification code.',
-                    background: '#1a1a1a',
-                    color: '#fff',
-                    confirmButtonColor: '#6366f1'
+                .then(function (response) {
+                    console.log("EmailJS Success:", response.status, response.text);
+                    if (otpSentEmail) {
+                        otpSentEmail.textContent = email;
+                    }
+
+                    // Switch to OTP form
+                    contactForm.style.display = 'none';
+                    otpForm.style.display = 'block';
+                    document.getElementById('otpCode').value = '';
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Code Sent!',
+                        text: 'Please check your email for the 6-digit verification code.',
+                        background: '#1a1a1a',
+                        color: '#fff',
+                        confirmButtonColor: '#6366f1'
+                    });
+                }, function (error) {
+                    console.error("EmailJS Error:", error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Failed to send verification email. Please try again.',
+                        background: '#1a1a1a',
+                        color: '#fff',
+                        confirmButtonColor: '#6366f1'
+                    });
+                    submitBtn.innerHTML = '<i class="fas fa-times"></i> Failed to Send';
+                    submitBtn.style.background = '#ef4444';
+                })
+                .finally(() => {
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalContent;
+                        submitBtn.style.background = '';
+                        submitBtn.disabled = false;
+                    }, 2000);
                 });
-            }, function(error) {
-                console.error("EmailJS Error:", error);
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Failed to send verification email. Please try again.',
-                    background: '#1a1a1a',
-                    color: '#fff',
-                    confirmButtonColor: '#6366f1'
-                });
-                submitBtn.innerHTML = '<i class="fas fa-times"></i> Failed to Send';
-                submitBtn.style.background = '#ef4444';
-            })
-            .finally(() => {
-                setTimeout(() => {
-                    submitBtn.innerHTML = originalContent;
-                    submitBtn.style.background = '';
-                    submitBtn.disabled = false;
-                }, 2000);
-            });
         });
 
         // Handle OTP verification and final form submission
@@ -408,54 +408,54 @@ document.addEventListener('DOMContentLoaded', () => {
                     _subject: `New Portfolio Contact from ${pendingFormData.name}`
                 })
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Message Sent!',
-                        text: 'Your email has been verified and message delivered successfully.',
-                        background: '#1a1a1a',
-                        color: '#fff',
-                        confirmButtonColor: '#22c55e'
-                    });
-                    
-                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Verified & Sent!';
-                    submitBtn.style.background = '#22c55e';
-                    
-                    // Reset everything
-                    contactForm.reset();
-                    otpForm.reset();
-                    generatedOtp = null;
-                    pendingFormData = null;
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Message Sent!',
+                            text: 'Your email has been verified and message delivered successfully.',
+                            background: '#1a1a1a',
+                            color: '#fff',
+                            confirmButtonColor: '#22c55e'
+                        });
 
+                        submitBtn.innerHTML = '<i class="fas fa-check"></i> Verified & Sent!';
+                        submitBtn.style.background = '#22c55e';
+
+                        // Reset everything
+                        contactForm.reset();
+                        otpForm.reset();
+                        generatedOtp = null;
+                        pendingFormData = null;
+
+                        setTimeout(() => {
+                            otpForm.style.display = 'none';
+                            contactForm.style.display = 'block';
+                        }, 2500);
+                    } else {
+                        throw new Error("FormSubmit failed");
+                    }
+                })
+                .catch(error => {
+                    console.error('Error submitting to FormSubmit:', error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Submission Failed',
+                        text: 'Email verified, but failed to deliver the message.',
+                        background: '#1a1a1a',
+                        color: '#fff'
+                    });
+                    submitBtn.innerHTML = '<i class="fas fa-times"></i> Error Occurred';
+                    submitBtn.style.background = '#ef4444';
+                })
+                .finally(() => {
                     setTimeout(() => {
-                        otpForm.style.display = 'none';
-                        contactForm.style.display = 'block';
+                        submitBtn.innerHTML = originalContent;
+                        submitBtn.style.background = '';
+                        submitBtn.disabled = false;
                     }, 2500);
-                } else {
-                    throw new Error("FormSubmit failed");
-                }
-            })
-            .catch(error => {
-                console.error('Error submitting to FormSubmit:', error);
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Submission Failed',
-                    text: 'Email verified, but failed to deliver the message.',
-                    background: '#1a1a1a',
-                    color: '#fff'
                 });
-                submitBtn.innerHTML = '<i class="fas fa-times"></i> Error Occurred';
-                submitBtn.style.background = '#ef4444';
-            })
-            .finally(() => {
-                setTimeout(() => {
-                    submitBtn.innerHTML = originalContent;
-                    submitBtn.style.background = '';
-                    submitBtn.disabled = false;
-                }, 2500);
-            });
         });
 
         // Handle back button on OTP form

@@ -1643,3 +1643,52 @@ body::after {
     
     .quick-nav-grid { grid-template-columns: 1fr; }
 }
+
+/* ==========================================
+   MUSIC TOGGLE BUTTON
+   ========================================== */
+.music-toggle-btn {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 50px;
+    height: 50px;
+    background: rgba(3, 0, 20, 0.6);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 99;
+    backdrop-filter: blur(10px);
+    transition: all var(--transition);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.music-toggle-btn:hover {
+    background: var(--accent);
+    color: #030014;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
+}
+
+.music-toggle-btn.playing {
+    animation: pulse 2s infinite;
+}
+
+.music-toggle-btn.playing i {
+    animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
+    70% { box-shadow: 0 0 0 15px rgba(245, 158, 11, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+}

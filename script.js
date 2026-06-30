@@ -482,4 +482,40 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // ==========================================
+    // MUSIC PLAYER TOGGLE
+    // ==========================================
+    const musicToggle = document.getElementById('musicToggle');
+    const bgMusic = document.getElementById('bgMusic');
+
+    if (musicToggle && bgMusic) {
+        bgMusic.volume = 0.5;
+
+        bgMusic.addEventListener('play', () => {
+            musicToggle.classList.add('playing');
+            musicToggle.innerHTML = '<i class="fas fa-pause"></i>';
+        });
+
+        bgMusic.addEventListener('pause', () => {
+            musicToggle.classList.remove('playing');
+            musicToggle.innerHTML = '<i class="fas fa-play"></i>';
+        });
+
+        musicToggle.addEventListener('click', () => {
+            if (bgMusic.paused) {
+                bgMusic.play().catch(e => console.log('Playback prevented by browser', e));
+            } else {
+                bgMusic.pause();
+            }
+        });
+
+        // Initialize UI state
+        if (!bgMusic.paused) {
+            musicToggle.classList.add('playing');
+            musicToggle.innerHTML = '<i class="fas fa-pause"></i>';
+        } else {
+            musicToggle.innerHTML = '<i class="fas fa-play"></i>';
+        }
+    }
+
 });

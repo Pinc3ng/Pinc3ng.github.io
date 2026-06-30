@@ -499,7 +499,8 @@ document.addEventListener('DOMContentLoaded', () => {
             musicToggle.classList.remove('playing');
         });
 
-        musicToggle.addEventListener('click', () => {
+        musicToggle.addEventListener('click', (e) => {
+            e.stopPropagation(); // Stop propagation so it doesn't trigger the window-level interaction play
             if (bgMusic.paused) {
                 bgMusic.play().catch(e => console.log('Autoplay prevented', e));
             } else {
@@ -509,11 +510,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Helper to remove all interaction listeners once music starts
         const removeInteractionListeners = () => {
-            document.removeEventListener('click', startOnInteraction);
-            document.removeEventListener('scroll', startOnInteraction);
-            document.removeEventListener('keydown', startOnInteraction);
-            document.removeEventListener('mousemove', startOnInteraction);
-            document.removeEventListener('touchstart', startOnInteraction);
+            window.removeEventListener('click', startOnInteraction, { capture: true });
+            window.removeEventListener('touchstart', startOnInteraction, { capture: true });
+            window.removeEventListener('pointerdown', startOnInteraction, { capture: true });
+            window.removeEventListener('keydown', startOnInteraction, { capture: true });
         };
 
         // 1. Try to play immediately on load
@@ -544,12 +544,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // Run the immediate play attempt
         tryImmediatePlay();
 
-        // Register interaction fallbacks (using once: true is not enough if it fails, so we handle removal manually)
-        document.addEventListener('click', startOnInteraction);
-        document.addEventListener('scroll', startOnInteraction);
-        document.addEventListener('keydown', startOnInteraction);
-        document.addEventListener('mousemove', startOnInteraction);
-        document.addEventListener('touchstart', startOnInteraction);
+        // Register interaction fallbacks using capture phase on window
+        window.addEventListener('click', startOnInteraction, { capture: true, once: true });
+        window.addEventListener('touchstart', startOnInteraction, { capture: true, once: true });
+        window.addEventListener('pointerdown', startOnInteraction, { capture: true, once: true });
+        window.addEventListener('keydown', startOnInteraction, { capture: true, once: true });
     }
 
 });

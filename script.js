@@ -477,201 +477,6 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const target = document.querySelector(anchor.getAttribute('href'));
             if (target) {
-                    icon: 'error',
-                    title: 'Email Unavailable',
-                    text: 'Disposable or temporary email addresses are not allowed.',
-                    background: '#1a1a1a',
-                    color: '#fff',
-                    confirmButtonColor: '#ef4444'
-                });
-                submitBtn.innerHTML = originalContent;
-                submitBtn.disabled = false;
-                return;
-            }
-
-            // 3. DNS MX Record check (checks if domain actually has mail servers)
-            try {
-                const dnsResponse = await fetch(`https://cloudflare-dns.com/dns-query?name=${domain}&type=MX`, {
-                    headers: { 'accept': 'application/dns-json' }
-                });
-                const dnsData = await dnsResponse.json();
-
-                if (!dnsData.Answer || dnsData.Answer.length === 0) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Email Unavailable',
-                        text: 'The email domain is not registered or cannot receive messages.',
-                        background: '#1a1a1a',
-                        color: '#fff',
-                        confirmButtonColor: '#ef4444'
-                    });
-                    submitBtn.innerHTML = originalContent;
-                    submitBtn.disabled = false;
-                    return;
-                }
-            } catch (error) {
-                console.warn('DNS validation failed, bypassing to prevent blocking users:', error);
-            }
-
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending Code...';
-
-            // Generate 6-digit OTP locally
-            generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
-
-            // Save form data for later
-            pendingFormData = { name, email, message };
-
-            // Send OTP via EmailJS
-            emailjs.send("service_hsy4kz2", "template_kkcx5ol", {
-                to_email: email,
-                otp_code: generatedOtp
-            })
-                .then(function (response) {
-                    console.log("EmailJS Success:", response.status, response.text);
-                    if (otpSentEmail) {
-                        otpSentEmail.textContent = email;
-                    }
-
-                    // Switch to OTP form
-                    contactForm.style.display = 'none';
-                    otpForm.style.display = 'block';
-                    document.getElementById('otpCode').value = '';
-
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Code Sent!',
-                        text: 'Please check your email for the 6-digit verification code.',
-                        background: '#1a1a1a',
-                        color: '#fff',
-                        confirmButtonColor: '#6366f1'
-                    });
-                }, function (error) {
-                    console.error("EmailJS Error:", error);
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Failed to send verification email. Please try again.',
-                        background: '#1a1a1a',
-                        color: '#fff',
-                        confirmButtonColor: '#6366f1'
-                    });
-                    submitBtn.innerHTML = '<i class="fas fa-times"></i> Failed to Send';
-                    submitBtn.style.background = '#ef4444';
-                })
-                .finally(() => {
-                    setTimeout(() => {
-                        submitBtn.innerHTML = originalContent;
-                        submitBtn.style.background = '';
-                        submitBtn.disabled = false;
-                    }, 2000);
-                });
-        });
-
-        // Handle OTP verification and final form submission
-        otpForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const submitBtn = otpForm.querySelector('button[type="submit"]');
-            const originalContent = submitBtn.innerHTML;
-
-            const otpCode = document.getElementById('otpCode').value;
-
-            if (otpCode !== generatedOtp) {
-                submitBtn.innerHTML = '<i class="fas fa-times"></i> Invalid Code';
-                submitBtn.style.background = '#ef4444';
-                setTimeout(() => {
-                    submitBtn.innerHTML = originalContent;
-                    submitBtn.style.background = '';
-                }, 2000);
-                return;
-            }
-
-            // OTP matches! Submit data to FormSubmit
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
-            submitBtn.disabled = true;
-
-            fetch('https://formsubmit.co/ajax/vinss37926@gmail.com', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    name: pendingFormData.name,
-                    email: pendingFormData.email,
-                    message: pendingFormData.message,
-                    _subject: `New Portfolio Contact from ${pendingFormData.name}`
-                })
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Message Sent!',
-                            text: 'Your email has been verified and message delivered successfully.',
-                            background: '#1a1a1a',
-                            color: '#fff',
-                            confirmButtonColor: '#22c55e'
-                        });
-
-                        submitBtn.innerHTML = '<i class="fas fa-check"></i> Verified & Sent!';
-                        submitBtn.style.background = '#22c55e';
-
-                        // Reset everything
-                        contactForm.reset();
-                        otpForm.reset();
-                        generatedOtp = null;
-                        pendingFormData = null;
-
-                        setTimeout(() => {
-                            otpForm.style.display = 'none';
-                            contactForm.style.display = 'block';
-                        }, 2500);
-                    } else {
-                        throw new Error("FormSubmit failed");
-                    }
-                })
-                .catch(error => {
-                    console.error('Error submitting to FormSubmit:', error);
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Submission Failed',
-                        text: 'Email verified, but failed to deliver the message.',
-                        background: '#1a1a1a',
-                        color: '#fff'
-                    });
-                    submitBtn.innerHTML = '<i class="fas fa-times"></i> Error Occurred';
-                    submitBtn.style.background = '#ef4444';
-                })
-                .finally(() => {
-                    setTimeout(() => {
-                        submitBtn.innerHTML = originalContent;
-                        submitBtn.style.background = '';
-                        submitBtn.disabled = false;
-                    }, 2500);
-                });
-        });
-
-        // Handle back button on OTP form
-        if (backToFormBtn) {
-            backToFormBtn.addEventListener('click', () => {
-                otpForm.style.display = 'none';
-                contactForm.style.display = 'block';
-                generatedOtp = null;
-                pendingFormData = null;
-            });
-        }
-    }
-
-    // ==========================================
-    // SMOOTH SCROLL
-    // ==========================================
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', (e) => {
-            e.preventDefault();
-            const target = document.querySelector(anchor.getAttribute('href'));
-            if (target) {
                 target.scrollIntoView({ behavior: 'smooth' });
             }
         });
@@ -696,37 +501,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         musicToggle.addEventListener('click', () => {
             if (bgMusic.paused) {
-                bgMusic.play().catch(e => console.log('Playback prevented by browser', e));
+                bgMusic.play().catch(e => console.log('Autoplay prevented', e));
             } else {
                 bgMusic.pause();
             }
         });
 
-        // Initialize UI state
-        if (!bgMusic.paused) {
-            musicToggle.classList.add('playing');
-        }
-
-        // Workaround for browser autoplay policies: play on first user interaction
-        const startMusicOnInteraction = () => {
+        // Play on first user interaction (bypasses browser autoplay policy)
+        const startOnInteraction = () => {
             if (bgMusic.paused) {
-                bgMusic.play().then(() => {
-                    // Success, remove event listeners
-                    document.removeEventListener('click', startMusicOnInteraction);
-                    document.removeEventListener('scroll', startMusicOnInteraction);
-                    document.removeEventListener('keydown', startMusicOnInteraction);
-                }).catch(e => console.log('Autoplay blocked until interaction'));
-            } else {
-                // Already playing, just remove listeners
-                document.removeEventListener('click', startMusicOnInteraction);
-                document.removeEventListener('scroll', startMusicOnInteraction);
-                document.removeEventListener('keydown', startMusicOnInteraction);
+                bgMusic.play().catch(() => {});
             }
         };
 
-        document.addEventListener('click', startMusicOnInteraction, { once: true });
-        document.addEventListener('scroll', startMusicOnInteraction, { once: true });
-        document.addEventListener('keydown', startMusicOnInteraction, { once: true });
+        document.addEventListener('click', startOnInteraction, { once: true });
+        document.addEventListener('scroll', startOnInteraction, { once: true });
+        document.addEventListener('keydown', startOnInteraction, { once: true });
     }
 
 });

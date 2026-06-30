@@ -507,16 +507,49 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Play on first user interaction (bypasses browser autoplay policy)
+        // Helper to remove all interaction listeners once music starts
+        const removeInteractionListeners = () => {
+            document.removeEventListener('click', startOnInteraction);
+            document.removeEventListener('scroll', startOnInteraction);
+            document.removeEventListener('keydown', startOnInteraction);
+            document.removeEventListener('mousemove', startOnInteraction);
+            document.removeEventListener('touchstart', startOnInteraction);
+        };
+
+        // 1. Try to play immediately on load
+        const tryImmediatePlay = () => {
+            bgMusic.play()
+                .then(() => {
+                    console.log('Autoplay succeeded immediately!');
+                    removeInteractionListeners();
+                })
+                .catch((error) => {
+                    console.log('Autoplay blocked by browser policy, waiting for first interaction...', error);
+                });
+        };
+
+        // 2. Fallback: play on first user interaction if blocked
         const startOnInteraction = () => {
             if (bgMusic.paused) {
-                bgMusic.play().catch(() => {});
+                bgMusic.play()
+                    .then(() => {
+                        removeInteractionListeners();
+                    })
+                    .catch((err) => console.log('Play failed on interaction', err));
+            } else {
+                removeInteractionListeners();
             }
         };
 
-        document.addEventListener('click', startOnInteraction, { once: true });
-        document.addEventListener('scroll', startOnInteraction, { once: true });
-        document.addEventListener('keydown', startOnInteraction, { once: true });
+        // Run the immediate play attempt
+        tryImmediatePlay();
+
+        // Register interaction fallbacks (using once: true is not enough if it fails, so we handle removal manually)
+        document.addEventListener('click', startOnInteraction);
+        document.addEventListener('scroll', startOnInteraction);
+        document.addEventListener('keydown', startOnInteraction);
+        document.addEventListener('mousemove', startOnInteraction);
+        document.addEventListener('touchstart', startOnInteraction);
     }
 
 });

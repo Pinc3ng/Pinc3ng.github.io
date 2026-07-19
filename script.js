@@ -287,24 +287,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // MUSIC
-    // ==========================================
-    const mBtn  = document.getElementById('musicToggle');
-    const audio = document.getElementById('bgMusic');
-    if (mBtn && audio) {
-        audio.volume = 0.45;
-        audio.addEventListener('play',  () => mBtn.classList.add('on'));
-        audio.addEventListener('pause', () => mBtn.classList.remove('on'));
-        mBtn.addEventListener('click', e => {
-            e.stopPropagation();
-            audio.paused ? audio.play().catch(() => {}) : audio.pause();
-        });
-        const tryPlay = () => {
-            audio.play().then(() => {}).catch(() => {});
-        };
-        tryPlay();
-        ['click','touchstart','keydown'].forEach(ev => window.addEventListener(ev, () => { if (audio.paused) audio.play().catch(() => {}); }, { once: true, capture: true }));
-    }
 
     // Smooth anchor scroll
     document.querySelectorAll('a[href^="#"]').forEach(a => {

@@ -803,7 +803,7 @@ body::after {
 }
 
 .sk-panel { display: none; }
-.sk-panel.show { display: block; }
+.sk-panel.show { display: block !important; visibility: visible !important; opacity: 1 !important; }
 
 .skill-grid {
     display: grid;
@@ -1018,7 +1018,7 @@ body::after {
 .ex-tab.active::after { transform: scaleX(1); }
 
 .t-list { display: none; }
-.t-list.show { display: flex; flex-direction: column; gap: 20px; }
+.t-list.show { display: flex !important; flex-direction: column; gap: 20px; visibility: visible !important; opacity: 1 !important; }
 
 .t-item {
     display: grid;

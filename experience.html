@@ -4,192 +4,166 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Experience — Vincent's work history and education.">
-    <title>Vincent | Experience</title>
+    <title>Vincent — Experience</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style-v5.css?v=1.2">
+    <link rel="stylesheet" href="style-v5.css">
 </head>
 <body>
+
+    <div id="cur-dot"></div>
+    <div id="cur-ring"></div>
 
     <nav class="navbar scrolled" id="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
-                <span class="logo-first">Vincent</span><span class="logo-second">.dev</span><span class="logo-dot"></span>
+                <span class="logo-name">vincent</span><span class="logo-dot-text">.dev</span><span class="logo-blink"></span>
             </a>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html"      class="nav-link">Home</a></li>
-                <li><a href="about.html"      class="nav-link">About</a></li>
-                <li><a href="skills.html"     class="nav-link">Skills</a></li>
-                <li><a href="projects.html"   class="nav-link">Projects</a></li>
-                <li><a href="experience.html" class="nav-link active">Experience</a></li>
-                <li><a href="contact.html"    class="nav-link">Contact</a></li>
+                <li><a href="index.html"      class="nav-link">home</a></li>
+                <li><a href="about.html"      class="nav-link">about</a></li>
+                <li><a href="skills.html"     class="nav-link">skills</a></li>
+                <li><a href="projects.html"   class="nav-link">projects</a></li>
+                <li><a href="experience.html" class="nav-link active">experience</a></li>
+                <li><a href="contact.html"    class="nav-link">contact</a></li>
             </ul>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
+                <span class="h-line"></span>
+                <span class="h-line"></span>
+                <span class="h-line"></span>
             </button>
         </div>
     </nav>
 
-    <div class="page-header">
+    <div class="page-hd">
         <div class="container">
-            <span class="section-eyebrow">// experience</span>
-            <h1 class="page-title">My <span class="accent">journey</span></h1>
-            <p class="page-subtitle">Work experience &amp; education</p>
+            <div class="tag">// experience</div>
+            <h1 class="page-hd-title">My journey.</h1>
+            <p class="page-hd-sub">Work experience &amp; education</p>
         </div>
     </div>
 
     <section class="section">
         <div class="container">
-            <div class="experience-tabs">
-                <button class="exp-tab active" data-exp="work" id="tabWork">
+            <div class="exp-tabs">
+                <button class="ex-tab active" data-exp="work-tl" id="tabWork">
                     <i class="fas fa-briefcase"></i> Work
                 </button>
-                <button class="exp-tab" data-exp="education" id="tabEducation">
+                <button class="ex-tab" data-exp="edu-tl" id="tabEducation">
                     <i class="fas fa-graduation-cap"></i> Education
                 </button>
             </div>
 
-            <div class="timeline-container">
-                <div class="timeline active" id="workTimeline">
-                    <div class="timeline-item reveal-up">
-                        <div class="timeline-date-col"><span class="timeline-date">Jun 2025 — Present</span></div>
-                        <div class="timeline-line">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-line-seg"></div>
-                        </div>
-                        <div class="timeline-card">
-                            <h3 class="timeline-title">Teller</h3>
-                            <h4 class="timeline-company">Bank Mayapada International</h4>
-                            <p class="timeline-desc">Rejoined Bank Mayapada International to process daily customer transactions, manage deposits and withdrawals, and deliver fast, secure, and accurate banking services.</p>
-                            <div class="timeline-tags"><span>Banking</span><span>Cash Handling</span><span>Transaction Handling</span></div>
-                        </div>
-                    </div>
-                    <div class="timeline-item reveal-up">
-                        <div class="timeline-date-col"><span class="timeline-date">2025 — Jun 2025</span></div>
-                        <div class="timeline-line">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-line-seg"></div>
-                        </div>
-                        <div class="timeline-card">
-                            <h3 class="timeline-title">Private Tutor</h3>
-                            <h4 class="timeline-company">Tuition Center</h4>
-                            <p class="timeline-desc">Provided intensive academic guidance and tutoring for students, assisted with homework, and designed effective learning methods to improve their academic performance.</p>
-                            <div class="timeline-tags"><span>Education</span><span>Teaching</span><span>Communication</span></div>
-                        </div>
-                    </div>
-                    <div class="timeline-item reveal-up">
-                        <div class="timeline-date-col"><span class="timeline-date">Jun 2024 — 2025</span></div>
-                        <div class="timeline-line">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-line-seg"></div>
-                        </div>
-                        <div class="timeline-card">
-                            <h3 class="timeline-title">Funding Officer</h3>
-                            <h4 class="timeline-company">Bank Mayapada International</h4>
-                            <p class="timeline-desc">Focused on retail and corporate fund mobilization by building strong relationships with new clients, managing funding portfolios, and promoting bank deposit and savings products.</p>
-                            <div class="timeline-tags"><span>Sales &amp; Marketing</span><span>Funding</span><span>Client Relationship</span></div>
-                        </div>
-                    </div>
-                    <div class="timeline-item reveal-up">
-                        <div class="timeline-date-col"><span class="timeline-date">2023 — Jun 2024</span></div>
-                        <div class="timeline-line">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-line-seg"></div>
-                        </div>
-                        <div class="timeline-card">
-                            <h3 class="timeline-title">Marketing Staff</h3>
-                            <h4 class="timeline-company">VIAR Motor Indonesia</h4>
-                            <p class="timeline-desc">Worked after graduating high school in 2023 to coordinate marketing activities, promote motor vehicle products to potential buyers, and handle sales negotiations.</p>
-                            <div class="timeline-tags"><span>Sales</span><span>Marketing</span><span>Negotiation</span></div>
-                        </div>
+            <div class="t-list show" id="work-tl">
+                <div class="t-item r-up">
+                    <div class="t-date"><span>Jun 2025<br>— Present</span></div>
+                    <div class="t-body">
+                        <h3 class="t-title">Teller</h3>
+                        <p class="t-place">Bank Mayapada International</p>
+                        <p class="t-desc">Rejoined Bank Mayapada International to process daily customer transactions, manage deposits and withdrawals, and deliver fast, secure, and accurate banking services.</p>
+                        <div class="t-tags"><span class="t-tag">Banking</span><span class="t-tag">Cash Handling</span><span class="t-tag">Transaction Handling</span></div>
                     </div>
                 </div>
-
-                <div class="timeline" id="educationTimeline">
-                    <div class="timeline-item reveal-up">
-                        <div class="timeline-date-col"><span class="timeline-date">2023 — Now</span></div>
-                        <div class="timeline-line">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-line-seg"></div>
-                        </div>
-                        <div class="timeline-card">
-                            <h3 class="timeline-title">Informatics Engineering</h3>
-                            <h4 class="timeline-company">Universitas Pelita Harapan (UPH)</h4>
-                            <p class="timeline-desc">Currently in 5th semester. Focused on software engineering and web technologies. Active in various university projects including website development.</p>
-                            <div class="timeline-tags"><span>Algorithms</span><span>Data Structures</span><span>Web Dev</span></div>
-                        </div>
+                <div class="t-item r-up">
+                    <div class="t-date"><span>2025<br>— Jun 2025</span></div>
+                    <div class="t-body">
+                        <h3 class="t-title">Private Tutor</h3>
+                        <p class="t-place">Tuition Center</p>
+                        <p class="t-desc">Provided intensive academic guidance and tutoring for students, assisted with homework, and designed effective learning methods to improve their academic performance.</p>
+                        <div class="t-tags"><span class="t-tag">Education</span><span class="t-tag">Teaching</span><span class="t-tag">Communication</span></div>
                     </div>
-                    <div class="timeline-item reveal-up">
-                        <div class="timeline-date-col"><span class="timeline-date">2020 — 2023</span></div>
-                        <div class="timeline-line">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-line-seg"></div>
-                        </div>
-                        <div class="timeline-card">
-                            <h3 class="timeline-title">Senior High School</h3>
-                            <h4 class="timeline-company">SMA / SMK</h4>
-                            <p class="timeline-desc">Graduated and developed early interest in computers and technology, which led to pursuing Informatics Engineering.</p>
-                            <div class="timeline-tags"><span>Mathematics</span><span>Computer Science</span></div>
-                        </div>
+                </div>
+                <div class="t-item r-up">
+                    <div class="t-date"><span>Jun 2024<br>— 2025</span></div>
+                    <div class="t-body">
+                        <h3 class="t-title">Funding Officer</h3>
+                        <p class="t-place">Bank Mayapada International</p>
+                        <p class="t-desc">Focused on retail and corporate fund mobilization by building strong relationships with new clients, managing funding portfolios, and promoting bank deposit and savings products.</p>
+                        <div class="t-tags"><span class="t-tag">Sales &amp; Marketing</span><span class="t-tag">Funding</span><span class="t-tag">Client Relationship</span></div>
+                    </div>
+                </div>
+                <div class="t-item r-up">
+                    <div class="t-date"><span>2023<br>— Jun 2024</span></div>
+                    <div class="t-body">
+                        <h3 class="t-title">Marketing Staff</h3>
+                        <p class="t-place">VIAR Motor Indonesia</p>
+                        <p class="t-desc">Worked after graduating high school in 2023 to coordinate marketing activities, promote motor vehicle products to potential buyers, and handle sales negotiations.</p>
+                        <div class="t-tags"><span class="t-tag">Sales</span><span class="t-tag">Marketing</span><span class="t-tag">Negotiation</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="t-list" id="edu-tl">
+                <div class="t-item r-up">
+                    <div class="t-date"><span>2023<br>— Now</span></div>
+                    <div class="t-body">
+                        <h3 class="t-title">Informatics Engineering</h3>
+                        <p class="t-place">Universitas Pelita Harapan (UPH)</p>
+                        <p class="t-desc">Currently in 5th semester. Focused on software engineering and web technologies. Active in various university projects including website development.</p>
+                        <div class="t-tags"><span class="t-tag">Algorithms</span><span class="t-tag">Data Structures</span><span class="t-tag">Web Dev</span></div>
+                    </div>
+                </div>
+                <div class="t-item r-up">
+                    <div class="t-date"><span>2020<br>— 2023</span></div>
+                    <div class="t-body">
+                        <h3 class="t-title">Senior High School</h3>
+                        <p class="t-place">SMA / SMK</p>
+                        <p class="t-desc">Graduated and developed early interest in computers and technology, which led to pursuing Informatics Engineering.</p>
+                        <div class="t-tags"><span class="t-tag">Mathematics</span><span class="t-tag">Computer Science</span></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Certificates -->
-    <section class="section section-alt">
+    <section class="section section-dark">
         <div class="container">
-            <div class="section-header">
-                <span class="section-eyebrow">// achievements</span>
-                <h2 class="section-title">Certificates &amp; <span class="accent">achievements</span></h2>
-            </div>
-            <div class="certs-grid">
-                <div class="cert-card reveal-up">
+            <div class="section-label r-up">// achievements</div>
+            <h2 class="section-title r-up">Certificates &amp; achievements</h2>
+            <div class="cert-grid" style="margin-top: 48px;">
+                <div class="cert-item r-up">
                     <div class="cert-icon"><i class="fab fa-google"></i></div>
-                    <div class="cert-title">Google IT Support Professional Certificate</div>
-                    <div class="cert-issuer">Google / Coursera</div>
+                    <div class="cert-name">Google IT Support Professional Certificate</div>
+                    <div class="cert-org">Google / Coursera</div>
                     <p class="cert-desc">Comprehensive IT support fundamentals including troubleshooting, networking, and system administration.</p>
-                    <span class="cert-year">2024</span>
+                    <span class="cert-yr">2024</span>
                 </div>
-                <div class="cert-card reveal-up">
+                <div class="cert-item r-up">
                     <div class="cert-icon"><i class="fas fa-database"></i></div>
-                    <div class="cert-title">SQL for Data Science</div>
-                    <div class="cert-issuer">UC Davis / Coursera</div>
+                    <div class="cert-name">SQL for Data Science</div>
+                    <div class="cert-org">UC Davis / Coursera</div>
                     <p class="cert-desc">Hands-on SQL fundamentals covering queries, data manipulation, and database design principles.</p>
-                    <span class="cert-year">2024</span>
+                    <span class="cert-yr">2024</span>
                 </div>
-                <div class="cert-card reveal-up">
+                <div class="cert-item r-up">
                     <div class="cert-icon"><i class="fab fa-js"></i></div>
-                    <div class="cert-title">JavaScript Algorithms and Data Structures</div>
-                    <div class="cert-issuer">freeCodeCamp</div>
+                    <div class="cert-name">JavaScript Algorithms and Data Structures</div>
+                    <div class="cert-org">freeCodeCamp</div>
                     <p class="cert-desc">300+ hours of JavaScript fundamentals, ES6, regex, debugging, data structures, and algorithm scripting.</p>
-                    <span class="cert-year">2023</span>
+                    <span class="cert-yr">2023</span>
                 </div>
-                <div class="cert-card reveal-up">
+                <div class="cert-item r-up">
                     <div class="cert-icon"><i class="fas fa-code"></i></div>
-                    <div class="cert-title">Responsive Web Design</div>
-                    <div class="cert-issuer">freeCodeCamp</div>
+                    <div class="cert-name">Responsive Web Design</div>
+                    <div class="cert-org">freeCodeCamp</div>
                     <p class="cert-desc">HTML, CSS, flexbox, grid, and accessibility fundamentals through 300+ hours of coursework.</p>
-                    <span class="cert-year">2023</span>
+                    <span class="cert-yr">2023</span>
                 </div>
-                <div class="cert-card reveal-up">
+                <div class="cert-item r-up">
                     <div class="cert-icon"><i class="fab fa-react"></i></div>
-                    <div class="cert-title">React — The Complete Guide</div>
-                    <div class="cert-issuer">Udemy</div>
+                    <div class="cert-name">React — The Complete Guide</div>
+                    <div class="cert-org">Udemy</div>
                     <p class="cert-desc">Deep dive into React including hooks, context API, Redux, and building full-stack apps.</p>
-                    <span class="cert-year">2023</span>
+                    <span class="cert-yr">2023</span>
                 </div>
-                <div class="cert-card reveal-up">
+                <div class="cert-item r-up">
                     <div class="cert-icon"><i class="fas fa-trophy"></i></div>
-                    <div class="cert-title">University Web Development Project</div>
-                    <div class="cert-issuer">Universitas Pelita Harapan</div>
+                    <div class="cert-name">University Web Development Project</div>
+                    <div class="cert-org">Universitas Pelita Harapan</div>
                     <p class="cert-desc">Completed a full-stack web application project as part of the software engineering coursework.</p>
-                    <span class="cert-year">2024</span>
+                    <span class="cert-yr">2024</span>
                 </div>
             </div>
         </div>
@@ -197,27 +171,19 @@
 
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <a href="index.html" class="nav-logo">
-                        <span class="logo-first">Vincent</span><span class="logo-second">.dev</span><span class="logo-dot"></span>
-                    </a>
-                    <p>Building things for the web, one line at a time.</p>
-                </div>
+            <div class="footer-inner">
+                <div class="footer-brand">vincent.dev</div>
                 <div class="footer-links">
                     <a href="about.html">About</a>
                     <a href="projects.html">Projects</a>
                     <a href="contact.html">Contact</a>
                 </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Vincent. All rights reserved.</p>
-                <p>Designed &amp; built with <i class="fas fa-heart" style="color: var(--accent)"></i></p>
+                <div class="footer-copy">&copy; 2026 Vincent</div>
             </div>
         </div>
     </footer>
 
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <button class="back-top" id="backToTop" aria-label="Back to top">
         <i class="fas fa-arrow-up"></i>
     </button>
 

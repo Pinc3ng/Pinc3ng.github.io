@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Vincent — Informatics Engineering student at Pelita Harapan University. Building things for the web.">
-    <title>Vincent | Home</title>
+    <title>Vincent — Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -13,116 +13,123 @@
 </head>
 <body>
 
+    <div id="cur-dot"></div>
+    <div id="cur-ring"></div>
+
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
-                <span class="logo-first">Vincent</span><span class="logo-second">.dev</span><span class="logo-dot"></span>
+                <span class="logo-name">vincent</span><span class="logo-dot-text">.dev</span><span class="logo-blink"></span>
             </a>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html"      class="nav-link active">Home</a></li>
-                <li><a href="about.html"      class="nav-link">About</a></li>
-                <li><a href="skills.html"     class="nav-link">Skills</a></li>
-                <li><a href="projects.html"   class="nav-link">Projects</a></li>
-                <li><a href="experience.html" class="nav-link">Experience</a></li>
-                <li><a href="contact.html"    class="nav-link">Contact</a></li>
+                <li><a href="index.html"      class="nav-link active">home</a></li>
+                <li><a href="about.html"      class="nav-link">about</a></li>
+                <li><a href="skills.html"     class="nav-link">skills</a></li>
+                <li><a href="projects.html"   class="nav-link">projects</a></li>
+                <li><a href="experience.html" class="nav-link">experience</a></li>
+                <li><a href="contact.html"    class="nav-link">contact</a></li>
             </ul>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
+                <span class="h-line"></span>
+                <span class="h-line"></span>
+                <span class="h-line"></span>
             </button>
         </div>
     </nav>
 
-    <section class="hero" id="home">
-        <div class="hero-container">
-            <div class="hero-content-grid">
-                <div class="hero-text-content">
-                    <p class="hero-eyebrow">Available for work &amp; collaboration</p>
-                    <h1 class="hero-title">
-                        <span class="name-line">Hi, I'm</span>
-                        <span class="accent-name">Vincent.</span>
-                    </h1>
-                    <p class="hero-desc">
-                        <strong>Informatics Engineering student</strong> at Pelita Harapan University —
-                        building clean, functional things for the web. I enjoy turning ideas into reality
-                        through code and thoughtful design.
-                    </p>
-                    <div class="hero-actions">
-                        <a href="projects.html" class="btn btn-primary" id="heroViewWork">
-                            <span>See my work</span>
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                        <a href="contact.html" class="btn btn-ghost" id="heroContact">
-                            <span>Get in touch</span>
-                        </a>
-                    </div>
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <span class="hero-badge-dot"></span>
+                    Available for work &amp; collaboration
                 </div>
-                <div class="hero-image-content">
-                    <div class="hero-image-wrapper">
-                        <img src="assets/profile.jpg" alt="Vincent" class="hero-profile-img">
+                <h1 class="hero-title">Hi, I'm<br>Vincent.</h1>
+                <p class="hero-title-sub">I build things<br>for the web.</p>
+                <p class="hero-desc">
+                    <strong>Informatics Engineering student</strong> at Pelita Harapan University —
+                    building clean, functional things for the web. I enjoy turning ideas into reality
+                    through code and thoughtful design.
+                </p>
+                <div class="hero-actions">
+                    <a href="projects.html" class="btn btn-solid" id="heroViewWork">
+                        See my work <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="contact.html" class="btn btn-outline" id="heroContact">
+                        Get in touch
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-num"><span class="count" data-n="3">0</span>+</div>
+                        <div class="stat-label">Years learning</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num"><span class="count" data-n="25">0</span>+</div>
+                        <div class="stat-label">Projects built</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">UPH</div>
+                        <div class="stat-label">University</div>
                     </div>
                 </div>
             </div>
-            <div class="hero-meta">
-                <div class="hero-meta-item">
-                    <span class="hero-meta-num"><span class="stat-number" data-target="3">0</span>+</span>
-                    <span class="hero-meta-label">Years learning</span>
-                </div>
-                <div class="hero-meta-item">
-                    <span class="hero-meta-num"><span class="stat-number" data-target="25">0</span>+</span>
-                    <span class="hero-meta-label">Projects built</span>
-                </div>
-                <div class="hero-meta-item">
-                    <span class="hero-meta-num">UPH</span>
-                    <span class="hero-meta-label">University</span>
+            <div class="hero-visual">
+                <div class="hero-img-wrap">
+                    <div class="hero-ring"></div>
+                    <div class="hero-img-frame">
+                        <img src="assets/profile.jpg" alt="Vincent" class="hero-profile-img">
+                    </div>
+                    <div class="hero-chip hero-chip-1">
+                        <i class="fas fa-code"></i> Full Stack Dev
+                    </div>
+                    <div class="hero-chip hero-chip-2">
+                        <i class="fas fa-graduation-cap"></i> UPH Student
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator" id="scrollIndicator">
-            <span>Scroll</span>
-            <div class="scroll-arrow"><i class="fas fa-chevron-down"></i></div>
+        <div class="scroll-hint" id="scrollHint">
+            <span>scroll</span>
+            <div class="scroll-hint-line"></div>
         </div>
     </section>
 
-    <!-- Quick Nav Cards -->
-    <section class="section section-alt">
+    <section class="section section-dark">
         <div class="container">
-            <div class="section-header reveal-up">
-                <span class="section-eyebrow">// explore</span>
-                <h2 class="section-title">Discover my <span class="accent">portfolio</span></h2>
-                <p class="section-subtitle">Navigate through the different sections to learn more about my background, skills, and work.</p>
-            </div>
-            <div class="quick-nav-grid">
-                <a href="about.html" class="quick-nav-card reveal-up">
-                    <div class="quick-nav-icon"><i class="fas fa-user"></i></div>
+            <div class="section-label r-up">// explore</div>
+            <h2 class="section-title r-up">Discover my portfolio</h2>
+            <p class="section-desc r-up">Navigate through the different sections to learn more about my background, skills, and work.</p>
+            <div class="cards-grid" style="margin-top: 48px;">
+                <a href="about.html" class="nav-card r-up">
+                    <div class="nav-card-icon">👤</div>
                     <h3>About Me</h3>
                     <p>Who I am, my background, and what drives me.</p>
-                    <span class="quick-nav-arrow"><i class="fas fa-arrow-right"></i></span>
+                    <div class="nav-card-arrow">→</div>
                 </a>
-                <a href="skills.html" class="quick-nav-card reveal-up">
-                    <div class="quick-nav-icon"><i class="fas fa-code"></i></div>
+                <a href="skills.html" class="nav-card r-up">
+                    <div class="nav-card-icon">⌨️</div>
                     <h3>Skills</h3>
                     <p>Technologies and tools I work with daily.</p>
-                    <span class="quick-nav-arrow"><i class="fas fa-arrow-right"></i></span>
+                    <div class="nav-card-arrow">→</div>
                 </a>
-                <a href="projects.html" class="quick-nav-card reveal-up">
-                    <div class="quick-nav-icon"><i class="fas fa-folder-open"></i></div>
+                <a href="projects.html" class="nav-card r-up">
+                    <div class="nav-card-icon">📁</div>
                     <h3>Projects</h3>
                     <p>Things I've built and shipped.</p>
-                    <span class="quick-nav-arrow"><i class="fas fa-arrow-right"></i></span>
+                    <div class="nav-card-arrow">→</div>
                 </a>
-                <a href="experience.html" class="quick-nav-card reveal-up">
-                    <div class="quick-nav-icon"><i class="fas fa-briefcase"></i></div>
+                <a href="experience.html" class="nav-card r-up">
+                    <div class="nav-card-icon">💼</div>
                     <h3>Experience</h3>
                     <p>My work history and education journey.</p>
-                    <span class="quick-nav-arrow"><i class="fas fa-arrow-right"></i></span>
+                    <div class="nav-card-arrow">→</div>
                 </a>
-                <a href="contact.html" class="quick-nav-card reveal-up">
-                    <div class="quick-nav-icon"><i class="fas fa-envelope"></i></div>
+                <a href="contact.html" class="nav-card r-up">
+                    <div class="nav-card-icon">✉️</div>
                     <h3>Contact</h3>
                     <p>Let's work together on something great.</p>
-                    <span class="quick-nav-arrow"><i class="fas fa-arrow-right"></i></span>
+                    <div class="nav-card-arrow">→</div>
                 </a>
             </div>
         </div>
@@ -130,35 +137,27 @@
 
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <a href="index.html" class="nav-logo">
-                        <span class="logo-first">Vincent</span><span class="logo-second">.dev</span><span class="logo-dot"></span>
-                    </a>
-                    <p>Building things for the web, one line at a time.</p>
-                </div>
+            <div class="footer-inner">
+                <div class="footer-brand">vincent.dev</div>
                 <div class="footer-links">
                     <a href="about.html">About</a>
                     <a href="projects.html">Projects</a>
                     <a href="contact.html">Contact</a>
                 </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Vincent. All rights reserved.</p>
-                <p>Designed &amp; built with <i class="fas fa-heart" style="color: var(--accent)"></i></p>
+                <div class="footer-copy">&copy; 2026 Vincent</div>
             </div>
         </div>
     </footer>
 
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <button class="back-top" id="backToTop" aria-label="Back to top">
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <button class="music-toggle-btn" id="musicToggle" aria-label="Toggle music">
+    <button class="music-btn" id="musicToggle" aria-label="Toggle music">
         <i class="fas fa-compact-disc"></i>
     </button>
 
-    <audio id="bgMusic" loop autoplay>
+    <audio id="bgMusic" loop>
         <source src="assets/Super Bass - Nicki Minaj (Feat. Ester Dean) (Lyrics).mp3" type="audio/mpeg">
     </audio>
 

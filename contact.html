@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Contact — Get in touch with Vincent.">
-    <title>Vincent | Contact</title>
+    <title>Vincent — Contact</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -13,124 +13,125 @@
 </head>
 <body>
 
+    <div id="cur-dot"></div>
+    <div id="cur-ring"></div>
+
     <nav class="navbar scrolled" id="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
-                <span class="logo-first">Vincent</span><span class="logo-second">.dev</span><span class="logo-dot"></span>
+                <span class="logo-name">vincent</span><span class="logo-dot-text">.dev</span><span class="logo-blink"></span>
             </a>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html"      class="nav-link">Home</a></li>
-                <li><a href="about.html"      class="nav-link">About</a></li>
-                <li><a href="skills.html"     class="nav-link">Skills</a></li>
-                <li><a href="projects.html"   class="nav-link">Projects</a></li>
-                <li><a href="experience.html" class="nav-link">Experience</a></li>
-                <li><a href="contact.html"    class="nav-link active">Contact</a></li>
+                <li><a href="index.html"      class="nav-link">home</a></li>
+                <li><a href="about.html"      class="nav-link">about</a></li>
+                <li><a href="skills.html"     class="nav-link">skills</a></li>
+                <li><a href="projects.html"   class="nav-link">projects</a></li>
+                <li><a href="experience.html" class="nav-link">experience</a></li>
+                <li><a href="contact.html"    class="nav-link active">contact</a></li>
             </ul>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
+                <span class="h-line"></span>
+                <span class="h-line"></span>
+                <span class="h-line"></span>
             </button>
         </div>
     </nav>
 
-    <div class="page-header">
+    <div class="page-hd">
         <div class="container">
-            <span class="section-eyebrow">// contact</span>
-            <h1 class="page-title">Let's <span class="accent">connect</span></h1>
-            <p class="page-subtitle">I'm currently available for freelance work and new opportunities.</p>
+            <div class="tag">// contact</div>
+            <h1 class="page-hd-title">Let's connect.</h1>
+            <p class="page-hd-sub">I'm currently available for freelance work and new opportunities.</p>
         </div>
     </div>
 
     <section class="section">
         <div class="container">
-            <div class="contact-grid">
-                <div class="contact-info reveal-left">
+            <div class="contact-layout">
+                <div class="contact-intro r-left">
                     <h3>Get in touch</h3>
                     <p>Whether you have a question, a project idea, or just want to say hi, I'll try my best to get back to you!</p>
-                    
-                    <div class="contact-cards">
-                        <div class="contact-card">
-                            <div class="contact-card-icon"><i class="fas fa-envelope"></i></div>
+
+                    <div class="c-cards">
+                        <div class="c-card">
+                            <div class="c-icon"><i class="fas fa-envelope"></i></div>
                             <div>
-                                <h4>Email</h4>
-                                <a href="mailto:vinss37926@gmail.com">vinss37926@gmail.com</a>
+                                <div class="c-key">Email</div>
+                                <div class="c-val"><a href="mailto:vinss37926@gmail.com">vinss37926@gmail.com</a></div>
                             </div>
                         </div>
-                        <div class="contact-card">
-                            <div class="contact-card-icon"><i class="fab fa-whatsapp"></i></div>
+                        <div class="c-card">
+                            <div class="c-icon"><i class="fab fa-whatsapp"></i></div>
                             <div>
-                                <h4>WhatsApp</h4>
-                                <a href="https://wa.me/6285213749887" target="_blank" rel="noopener noreferrer">085213749887</a>
+                                <div class="c-key">WhatsApp</div>
+                                <div class="c-val"><a href="https://wa.me/6285213749887" target="_blank" rel="noopener">085213749887</a></div>
                             </div>
                         </div>
-                        <div class="contact-card">
-                            <div class="contact-card-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="c-card">
+                            <div class="c-icon"><i class="fas fa-map-marker-alt"></i></div>
                             <div>
-                                <h4>Location</h4>
-                                <span>Medan, Indonesia</span>
+                                <div class="c-key">Location</div>
+                                <div class="c-val">Medan, Indonesia</div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="social-links">
-                        <a href="#" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="#" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+
+                    <div class="social-row">
+                        <a href="#" class="s-link" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" class="s-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="s-link" title="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
 
-                <div class="contact-form-wrapper reveal-right">
-                    <!-- Contact Form -->
-                    <form class="contact-form" id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <div class="input-wrapper">
-                                <i class="fas fa-user"></i>
-                                <input type="text" id="name" placeholder="John Doe" required>
+                <div class="r-right">
+                    <div class="form-wrap">
+                        <form id="contactForm">
+                            <div class="f-group">
+                                <label class="f-label" for="name">Name</label>
+                                <div class="f-wrap">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" id="name" placeholder="John Doe" required>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <div class="input-wrapper">
-                                <i class="fas fa-envelope"></i>
-                                <input type="email" id="email" placeholder="john@example.com" required>
+                            <div class="f-group">
+                                <label class="f-label" for="email">Email</label>
+                                <div class="f-wrap">
+                                    <i class="fas fa-envelope"></i>
+                                    <input type="email" id="email" placeholder="john@example.com" required>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <div class="input-wrapper textarea-wrapper">
-                                <i class="fas fa-comment-alt"></i>
-                                <textarea id="message" placeholder="How can I help you?" required></textarea>
+                            <div class="f-group">
+                                <label class="f-label" for="message">Message</label>
+                                <div class="f-wrap ta">
+                                    <i class="fas fa-comment-alt"></i>
+                                    <textarea id="message" placeholder="How can I help you?" required></textarea>
+                                </div>
                             </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-full">
-                            <span>Send Message</span>
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </form>
+                            <button type="submit" class="btn btn-solid btn-full">
+                                <span>Send Message</span> <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
 
-                    <!-- OTP Form (Hidden by default) -->
-                    <form class="contact-form" id="otpForm" style="display: none;">
-                        <h3 style="margin-bottom: 10px; color: var(--text-color);">Verify Your Email</h3>
-                        <p style="margin-bottom: 20px; font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">
-                            We've sent a 6-digit verification code to <strong id="otpSentEmail" style="color: var(--accent);"></strong>. Please enter the code below to confirm and send your message.
-                        </p>
-                        <div class="form-group">
-                            <label for="otpCode">Verification Code</label>
-                            <div class="input-wrapper">
-                                <i class="fas fa-key"></i>
-                                <input type="text" id="otpCode" placeholder="Enter 6-digit OTP" maxlength="6" pattern="\d{6}" required>
+                        <form id="otpForm" style="display:none;">
+                            <h3 style="font-size:1.2rem;font-weight:800;color:var(--text);margin-bottom:10px;letter-spacing:-0.02em;">Verify your email</h3>
+                            <p style="font-size:0.84rem;color:var(--text-2);margin-bottom:24px;line-height:1.7;">
+                                We sent a 6-digit code to <strong id="otpSentEmail" style="color:var(--text);"></strong>. Enter it below to confirm.
+                            </p>
+                            <div class="f-group">
+                                <label class="f-label" for="otpCode">Verification Code</label>
+                                <div class="f-wrap">
+                                    <i class="fas fa-key"></i>
+                                    <input type="text" id="otpCode" placeholder="000000" maxlength="6" pattern="\d{6}" required>
+                                </div>
                             </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-full">
-                            <span>Verify & Confirm Message</span>
-                            <i class="fas fa-check-circle"></i>
-                        </button>
-                        <button type="button" class="btn btn-secondary btn-full" id="backToFormBtn" style="margin-top: 10px; background: transparent; border: 1px solid var(--border-color, #333); color: var(--text-color);">
-                            <span>Back</span>
-                        </button>
-                    </form>
+                            <button type="submit" class="btn btn-solid btn-full">
+                                <span>Verify &amp; Send</span> <i class="fas fa-check-circle"></i>
+                            </button>
+                            <button type="button" id="backToFormBtn" class="btn btn-outline btn-full" style="margin-top:10px;">
+                                <i class="fas fa-arrow-left"></i> <span>Back</span>
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -138,32 +139,23 @@
 
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <a href="index.html" class="nav-logo">
-                        <span class="logo-first">Vincent</span><span class="logo-second">.dev</span><span class="logo-dot"></span>
-                    </a>
-                    <p>Building things for the web, one line at a time.</p>
-                </div>
+            <div class="footer-inner">
+                <div class="footer-brand">vincent.dev</div>
                 <div class="footer-links">
                     <a href="about.html">About</a>
                     <a href="projects.html">Projects</a>
                     <a href="contact.html">Contact</a>
                 </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Vincent. All rights reserved.</p>
-                <p>Designed &amp; built with <i class="fas fa-heart" style="color: var(--accent)"></i></p>
+                <div class="footer-copy">&copy; 2026 Vincent</div>
             </div>
         </div>
     </footer>
 
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <button class="back-top" id="backToTop" aria-label="Back to top">
         <i class="fas fa-arrow-up"></i>
     </button>
 
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -1,194 +1,184 @@
 /* ==========================================
-   PERSONAL PORTFOLIO - JAVASCRIPT
+   VINCENT PORTFOLIO — MINIMAL SCRIPT
    ========================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
 
     // ==========================================
-    // NAVBAR SCROLL EFFECT
+    // CURSOR
     // ==========================================
-    const navbar = document.getElementById('navbar');
-    const backToTop = document.getElementById('backToTop');
-    const scrollIndicator = document.getElementById('scrollIndicator');
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-link');
+    const dot  = document.getElementById('cur-dot');
+    const ring = document.getElementById('cur-ring');
 
-    function handleScroll() {
-        const scrollY = window.scrollY;
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    let trailCount = 0;
 
-        if (scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
+    if (dot && ring) {
+        document.addEventListener('mousemove', e => {
+            mx = e.clientX;
+            my = e.clientY;
+            dot.style.left = mx + 'px';
+            dot.style.top  = my + 'px';
 
-        if (scrollY > 100) {
-            scrollIndicator.classList.add('hidden');
-        } else {
-            scrollIndicator.classList.remove('hidden');
-        }
+            trailCount++;
+            if (trailCount % 4 === 0) spawnTrail(mx, my);
+        });
 
-        if (scrollY > 500) {
-            backToTop.classList.add('visible');
-        } else {
-            backToTop.classList.remove('visible');
-        }
+        (function trackRing() {
+            rx += (mx - rx) * 0.15;
+            ry += (my - ry) * 0.15;
+            ring.style.left = rx + 'px';
+            ring.style.top  = ry + 'px';
+            requestAnimationFrame(trackRing);
+        })();
 
-        // Active nav link
-        sections.forEach(section => {
-            const top = section.offsetTop - 100;
-            const height = section.offsetHeight;
-            const id = section.getAttribute('id');
+        // hover state
+        document.querySelectorAll('a, button, input, textarea, .nav-card, .proj-card, .t-item, .cert-item, .c-card, .skill-item').forEach(el => {
+            el.addEventListener('mouseenter', () => { dot.classList.add('hover'); ring.classList.add('hover'); });
+            el.addEventListener('mouseleave', () => { dot.classList.remove('hover'); ring.classList.remove('hover'); });
+        });
 
-            if (id && scrollY >= top && scrollY < top + height) {
-                const hasMatchingLink = Array.from(navLinks).some(link => link.getAttribute('data-section') === id);
-                if (hasMatchingLink) {
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('data-section') === id) {
-                            link.classList.add('active');
-                        }
-                    });
-                }
-            }
+        // click effect
+        document.addEventListener('mousedown', () => {
+            dot.style.transform = 'translate(-50%,-50%) scale(0.65)';
+        });
+        document.addEventListener('mouseup', () => {
+            dot.style.transform = 'translate(-50%,-50%) scale(1)';
+            clickBurst(mx, my);
         });
     }
 
-    window.addEventListener('scroll', handleScroll);
+    // Trail
+    const grays = ['#fff','#ccc','#aaa','#888','#666'];
+    function spawnTrail(x, y) {
+        const p = document.createElement('div');
+        p.classList.add('trail');
+        const sz = Math.random() * 5 + 2;
+        const ox = (Math.random() - .5) * 8;
+        const oy = (Math.random() - .5) * 8;
+        const c  = grays[Math.floor(Math.random() * grays.length)];
+        p.style.cssText = `left:${x+ox}px;top:${y+oy}px;width:${sz}px;height:${sz}px;background:${c};`;
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 700);
+    }
 
-    backToTop.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    // Click burst
+    function clickBurst(x, y) {
+        for (let i = 0; i < 8; i++) {
+            const p = document.createElement('div');
+            const angle = (i / 8) * Math.PI * 2;
+            const d = 30 + Math.random() * 25;
+            p.style.cssText = `position:fixed;left:${x}px;top:${y}px;width:5px;height:5px;
+                background:#fff;border-radius:50%;pointer-events:none;z-index:99999;
+                transform:translate(-50%,-50%);`;
+            document.body.appendChild(p);
+            p.animate([
+                { transform: 'translate(-50%,-50%) scale(1)', opacity: .7 },
+                { transform: `translate(calc(-50% + ${Math.cos(angle)*d}px), calc(-50% + ${Math.sin(angle)*d}px)) scale(0)`, opacity: 0 }
+            ], { duration: 500, easing: 'cubic-bezier(0.16,1,0.3,1)', fill: 'forwards' })
+            .onfinish = () => p.remove();
+        }
+    }
 
     // ==========================================
-    // MOBILE MENU
+    // NAVBAR
     // ==========================================
-    const navToggle = document.getElementById('navToggle');
-    const navMenu = document.getElementById('navMenu');
+    const navbar  = document.getElementById('navbar');
+    const topBtn  = document.getElementById('backToTop');
+    const scrollHint = document.getElementById('scrollHint');
 
-    navToggle.addEventListener('click', () => {
-        navToggle.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
+    window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        if (navbar) { y > 40 ? navbar.classList.add('scrolled') : navbar.classList.remove('scrolled'); }
+        if (topBtn) { y > 500 ? topBtn.classList.add('show') : topBtn.classList.remove('show'); }
+        if (scrollHint) { y > 80 ? scrollHint.classList.add('gone') : scrollHint.classList.remove('gone'); }
+    }, { passive: true });
 
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            navToggle.classList.remove('active');
-            navMenu.classList.remove('active');
+    if (topBtn) topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Mobile nav
+    const toggle = document.getElementById('navToggle');
+    const menu   = document.getElementById('navMenu');
+    if (toggle && menu) {
+        toggle.addEventListener('click', () => {
+            toggle.classList.toggle('open');
+            menu.classList.toggle('open');
         });
-    });
-
-    // ==========================================
-    // STAT COUNTER ANIMATION
-    // ==========================================
-    const statNumbers = document.querySelectorAll('.stat-number');
-    let statsAnimated = false;
-
-    function animateStats() {
-        if (statsAnimated) return;
-        statsAnimated = true;
-
-        statNumbers.forEach(num => {
-            const target = parseInt(num.getAttribute('data-target'));
-            if (!target) return;
-            const duration = 1800;
-            const step = target / (duration / 16);
-            let current = 0;
-
-            const counter = setInterval(() => {
-                current += step;
-                if (current >= target) {
-                    current = target;
-                    clearInterval(counter);
-                }
-                num.textContent = Math.floor(current);
-            }, 16);
-        });
+        menu.querySelectorAll('.nav-link').forEach(l => l.addEventListener('click', () => {
+            toggle.classList.remove('open');
+            menu.classList.remove('open');
+        }));
     }
 
     // ==========================================
     // SCROLL REVEAL
     // ==========================================
-    const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
+    const revEls = document.querySelectorAll('.r-up, .r-left, .r-right');
+    const revObs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); revObs.unobserve(e.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
+    revEls.forEach(el => revObs.observe(el));
 
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('revealed');
-                revealObserver.unobserve(entry.target);
+    // Initial above-fold reveal
+    setTimeout(() => {
+        revEls.forEach(el => {
+            if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('on');
+        });
+    }, 80);
+
+    // ==========================================
+    // STAT COUNTER
+    // ==========================================
+    const counts = document.querySelectorAll('.count[data-n]');
+    let counted = false;
+    const statsObs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting && !counted) {
+                counted = true;
+                counts.forEach(el => {
+                    const target = +el.dataset.n;
+                    let cur = 0;
+                    const step = target / (1800 / 16);
+                    const t = setInterval(() => {
+                        cur += step;
+                        el.textContent = Math.floor(cur >= target ? (clearInterval(t), target) : cur);
+                    }, 16);
+                });
             }
         });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-    revealElements.forEach(el => revealObserver.observe(el));
-
-    // Stats observer
-    const heroMeta = document.querySelector('.hero-meta');
-    if (heroMeta) {
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateStats();
-                    statsObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        statsObserver.observe(heroMeta);
-    }
+    }, { threshold: .5 });
+    const heroStats = document.querySelector('.hero-stats');
+    if (heroStats) statsObs.observe(heroStats);
 
     // ==========================================
-    // SKILLS TABS
+    // SKILL TABS
     // ==========================================
-    const skillTabs = document.querySelectorAll('.skill-tab');
-    const skillPanels = document.querySelectorAll('.skills-panel');
-
-    skillTabs.forEach(tab => {
+    document.querySelectorAll('.sk-tab').forEach(tab => {
         tab.addEventListener('click', () => {
-            const targetTab = tab.getAttribute('data-tab');
-
-            skillTabs.forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.sk-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.sk-panel').forEach(p => p.classList.remove('show'));
             tab.classList.add('active');
-
-            skillPanels.forEach(panel => {
-                panel.classList.remove('active');
-                if (panel.id === targetTab) {
-                    panel.classList.add('active');
-
-                    // Re-trigger reveal for newly visible items
-                    const items = panel.querySelectorAll('.reveal-up');
-                    items.forEach(item => {
-                        item.classList.remove('revealed');
-                        setTimeout(() => item.classList.add('revealed'), 50);
-                    });
-                }
-            });
+            const panel = document.getElementById(tab.dataset.tab);
+            if (panel) {
+                panel.classList.add('show');
+                panel.querySelectorAll('.r-up').forEach((el, i) => {
+                    el.classList.remove('on');
+                    setTimeout(() => el.classList.add('on'), i * 60);
+                });
+            }
         });
     });
 
     // ==========================================
     // PROJECT FILTER
     // ==========================================
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
-
-    filterBtns.forEach(btn => {
+    document.querySelectorAll('.f-btn').forEach(btn => {
         btn.addEventListener('click', () => {
-            const filter = btn.getAttribute('data-filter');
-
-            filterBtns.forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.f-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-
-            projectCards.forEach(card => {
-                const category = card.getAttribute('data-category');
-                if (filter === 'all' || category === filter) {
-                    card.classList.remove('hidden');
-                    card.style.animation = 'none';
-                    card.offsetHeight; // reflow
-                    card.style.animation = '';
-                } else {
-                    card.classList.add('hidden');
-                }
+            const f = btn.dataset.f;
+            document.querySelectorAll('.proj-card').forEach(c => {
+                (f === 'all' || c.dataset.cat === f) ? c.classList.remove('hidden') : c.classList.add('hidden');
             });
         });
     });
@@ -196,359 +186,132 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // EXPERIENCE TABS
     // ==========================================
-    const expTabs = document.querySelectorAll('.exp-tab');
-    const workTimeline = document.getElementById('workTimeline');
-    const educationTimeline = document.getElementById('educationTimeline');
-
-    expTabs.forEach(tab => {
+    document.querySelectorAll('.ex-tab').forEach(tab => {
         tab.addEventListener('click', () => {
-            const targetExp = tab.getAttribute('data-exp');
-
-            expTabs.forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.ex-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.t-list').forEach(l => l.classList.remove('show'));
             tab.classList.add('active');
-
-            if (targetExp === 'work') {
-                workTimeline.classList.add('active');
-                educationTimeline.classList.remove('active');
-            } else {
-                workTimeline.classList.remove('active');
-                educationTimeline.classList.add('active');
+            const target = document.getElementById(tab.dataset.exp);
+            if (target) {
+                target.classList.add('show');
+                target.querySelectorAll('.r-up').forEach((el, i) => {
+                    el.classList.remove('on');
+                    setTimeout(() => el.classList.add('on'), i * 80);
+                });
             }
-
-            // Re-trigger reveal for newly visible timeline items
-            const activeTimeline = targetExp === 'work' ? workTimeline : educationTimeline;
-            const items = activeTimeline.querySelectorAll('.reveal-up');
-            items.forEach((item, i) => {
-                item.classList.remove('revealed');
-                setTimeout(() => item.classList.add('revealed'), i * 100);
-            });
         });
     });
 
     // ==========================================
-    // CONTACT FORM & OTP VERIFICATION (FRONTEND ONLY)
+    // CONTACT FORM
     // ==========================================
-    const contactForm = document.getElementById('contactForm');
-    const otpForm = document.getElementById('otpForm');
-    const otpSentEmail = document.getElementById('otpSentEmail');
-    const backToFormBtn = document.getElementById('backToFormBtn');
+    const cForm  = document.getElementById('contactForm');
+    const oForm  = document.getElementById('otpForm');
+    const sentEl = document.getElementById('otpSentEmail');
+    const backBtn = document.getElementById('backToFormBtn');
+    let otp = null, pending = null;
 
-    // Store data temporarily between steps
-    let generatedOtp = null;
-    let pendingFormData = null;
+    if (typeof emailjs !== 'undefined') emailjs.init("8WICibyAmSJJPRE7l");
 
-    // Initialize EmailJS
-    if (typeof emailjs !== 'undefined') {
-        emailjs.init("8WICibyAmSJJPRE7l");
-    }
-
-    if (contactForm && otpForm) {
-        // Handle contact form submission (Generates and sends OTP)
-        contactForm.addEventListener('submit', async (e) => {
+    if (cForm && oForm) {
+        cForm.addEventListener('submit', async e => {
             e.preventDefault();
+            const btn = cForm.querySelector('[type=submit]');
+            const orig = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Checking...';
+            btn.disabled = true;
 
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalContent = submitBtn.innerHTML;
-
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Checking Email...';
-            submitBtn.disabled = true;
-
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value.trim();
+            const name    = document.getElementById('name').value;
+            const email   = document.getElementById('email').value.trim();
             const message = document.getElementById('message').value;
 
-            // 1. Basic format validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Invalid Email',
-                    text: 'The email format you entered is incorrect.',
-                    background: '#1a1a1a',
-                    color: '#fff',
-                    confirmButtonColor: '#ef4444'
-                });
-                submitBtn.innerHTML = originalContent;
-                submitBtn.disabled = false;
-                return;
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                alert('Invalid email format.'); btn.innerHTML = orig; btn.disabled = false; return;
             }
 
-            // 2. Blacklist of temporary/disposable email domains
-            const disposableDomains = [
-                'mailinator.com', '10minutemail.com', 'tempmail.com', 'temp-mail.org',
-                'yopmail.com', 'guerrillamail.com', 'sharklasers.com', 'dispostable.com',
-                'getairmail.com', 'maildrop.cc', 'tempmailaddress.com'
-            ];
-            const domain = email.split('@')[1].toLowerCase();
-            if (disposableDomains.includes(domain)) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Email Unavailable',
-                    text: 'Disposable or temporary email addresses are not allowed.',
-                    background: '#1a1a1a',
-                    color: '#fff',
-                    confirmButtonColor: '#ef4444'
-                });
-                submitBtn.innerHTML = originalContent;
-                submitBtn.disabled = false;
-                return;
+            const disposable = ['mailinator.com','10minutemail.com','tempmail.com','temp-mail.org','yopmail.com'];
+            if (disposable.includes(email.split('@')[1])) {
+                alert('Disposable email not allowed.'); btn.innerHTML = orig; btn.disabled = false; return;
             }
 
-            // 3. DNS MX Record check (checks if domain actually has mail servers)
             try {
-                const dnsResponse = await fetch(`https://cloudflare-dns.com/dns-query?name=${domain}&type=MX`, {
-                    headers: { 'accept': 'application/dns-json' }
-                });
-                const dnsData = await dnsResponse.json();
+                const res = await fetch(`https://cloudflare-dns.com/dns-query?name=${email.split('@')[1]}&type=MX`, { headers: { accept: 'application/dns-json' } });
+                const d = await res.json();
+                if (!d.Answer?.length) { alert('Email domain has no mail server.'); btn.innerHTML = orig; btn.disabled = false; return; }
+            } catch {}
 
-                if (!dnsData.Answer || dnsData.Answer.length === 0) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Email Unavailable',
-                        text: 'The email domain is not registered or cannot receive messages.',
-                        background: '#1a1a1a',
-                        color: '#fff',
-                        confirmButtonColor: '#ef4444'
-                    });
-                    submitBtn.innerHTML = originalContent;
-                    submitBtn.disabled = false;
-                    return;
-                }
-            } catch (error) {
-                console.warn('DNS validation failed, bypassing to prevent blocking users:', error);
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending code...';
+            otp = Math.floor(100000 + Math.random() * 900000).toString();
+            pending = { name, email, message };
+
+            try {
+                await emailjs.send("service_hsy4kz2","template_kkcx5ol",{ to_email: email, otp_code: otp });
+                if (sentEl) sentEl.textContent = email;
+                cForm.style.display = 'none';
+                oForm.style.display = 'block';
+                document.getElementById('otpCode').value = '';
+            } catch {
+                alert('Failed to send verification email.');
+            } finally {
+                setTimeout(() => { btn.innerHTML = orig; btn.disabled = false; }, 1500);
             }
-
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending Code...';
-
-            // Generate 6-digit OTP locally
-            generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
-
-            // Save form data for later
-            pendingFormData = { name, email, message };
-
-            // Send OTP via EmailJS
-            emailjs.send("service_hsy4kz2", "template_kkcx5ol", {
-                to_email: email,
-                otp_code: generatedOtp
-            })
-                .then(function (response) {
-                    console.log("EmailJS Success:", response.status, response.text);
-                    if (otpSentEmail) {
-                        otpSentEmail.textContent = email;
-                    }
-
-                    // Switch to OTP form
-                    contactForm.style.display = 'none';
-                    otpForm.style.display = 'block';
-                    document.getElementById('otpCode').value = '';
-
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Code Sent!',
-                        text: 'Please check your email for the 6-digit verification code.',
-                        background: '#1a1a1a',
-                        color: '#fff',
-                        confirmButtonColor: '#6366f1'
-                    });
-                }, function (error) {
-                    console.error("EmailJS Error:", error);
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Failed to send verification email. Please try again.',
-                        background: '#1a1a1a',
-                        color: '#fff',
-                        confirmButtonColor: '#6366f1'
-                    });
-                    submitBtn.innerHTML = '<i class="fas fa-times"></i> Failed to Send';
-                    submitBtn.style.background = '#ef4444';
-                })
-                .finally(() => {
-                    setTimeout(() => {
-                        submitBtn.innerHTML = originalContent;
-                        submitBtn.style.background = '';
-                        submitBtn.disabled = false;
-                    }, 2000);
-                });
         });
 
-        // Handle OTP verification and final form submission
-        otpForm.addEventListener('submit', (e) => {
+        oForm.addEventListener('submit', e => {
             e.preventDefault();
+            const btn = oForm.querySelector('[type=submit]');
+            const code = document.getElementById('otpCode').value;
+            if (code !== otp) { btn.textContent = 'Wrong code'; setTimeout(() => btn.innerHTML = '<span>Verify & Send</span><i class="fas fa-check-circle"></i>', 1500); return; }
 
-            const submitBtn = otpForm.querySelector('button[type="submit"]');
-            const originalContent = submitBtn.innerHTML;
-
-            const otpCode = document.getElementById('otpCode').value;
-
-            if (otpCode !== generatedOtp) {
-                submitBtn.innerHTML = '<i class="fas fa-times"></i> Invalid Code';
-                submitBtn.style.background = '#ef4444';
-                setTimeout(() => {
-                    submitBtn.innerHTML = originalContent;
-                    submitBtn.style.background = '';
-                }, 2000);
-                return;
-            }
-
-            // OTP matches! Submit data to FormSubmit
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
-            submitBtn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+            btn.disabled = true;
 
             fetch('https://formsubmit.co/ajax/vinss37926@gmail.com', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    name: pendingFormData.name,
-                    email: pendingFormData.email,
-                    message: pendingFormData.message,
-                    _subject: `New Portfolio Contact from ${pendingFormData.name}`
-                })
+                headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                body: JSON.stringify({ ...pending, _subject: `Portfolio contact from ${pending.name}` })
             })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Message Sent!',
-                            text: 'Your email has been verified and message delivered successfully.',
-                            background: '#1a1a1a',
-                            color: '#fff',
-                            confirmButtonColor: '#22c55e'
-                        });
-
-                        submitBtn.innerHTML = '<i class="fas fa-check"></i> Verified & Sent!';
-                        submitBtn.style.background = '#22c55e';
-
-                        // Reset everything
-                        contactForm.reset();
-                        otpForm.reset();
-                        generatedOtp = null;
-                        pendingFormData = null;
-
-                        setTimeout(() => {
-                            otpForm.style.display = 'none';
-                            contactForm.style.display = 'block';
-                        }, 2500);
-                    } else {
-                        throw new Error("FormSubmit failed");
-                    }
-                })
-                .catch(error => {
-                    console.error('Error submitting to FormSubmit:', error);
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Submission Failed',
-                        text: 'Email verified, but failed to deliver the message.',
-                        background: '#1a1a1a',
-                        color: '#fff'
-                    });
-                    submitBtn.innerHTML = '<i class="fas fa-times"></i> Error Occurred';
-                    submitBtn.style.background = '#ef4444';
-                })
-                .finally(() => {
-                    setTimeout(() => {
-                        submitBtn.innerHTML = originalContent;
-                        submitBtn.style.background = '';
-                        submitBtn.disabled = false;
-                    }, 2500);
-                });
+            .then(r => r.json())
+            .then(d => {
+                if (d.success) {
+                    alert('Message sent successfully!');
+                    cForm.reset(); oForm.reset(); otp = null; pending = null;
+                    setTimeout(() => { oForm.style.display = 'none'; cForm.style.display = 'block'; }, 1000);
+                }
+            })
+            .catch(() => alert('Failed to send message.'))
+            .finally(() => { setTimeout(() => { btn.innerHTML = '<span>Verify & Send</span><i class="fas fa-check-circle"></i>'; btn.disabled = false; }, 1500); });
         });
 
-        // Handle back button on OTP form
-        if (backToFormBtn) {
-            backToFormBtn.addEventListener('click', () => {
-                otpForm.style.display = 'none';
-                contactForm.style.display = 'block';
-                generatedOtp = null;
-                pendingFormData = null;
-            });
-        }
+        if (backBtn) backBtn.addEventListener('click', () => { oForm.style.display = 'none'; cForm.style.display = 'block'; otp = null; pending = null; });
     }
 
     // ==========================================
-    // SMOOTH SCROLL
+    // MUSIC
     // ==========================================
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', (e) => {
-            e.preventDefault();
-            const target = document.querySelector(anchor.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
-            }
+    const mBtn  = document.getElementById('musicToggle');
+    const audio = document.getElementById('bgMusic');
+    if (mBtn && audio) {
+        audio.volume = 0.45;
+        audio.addEventListener('play',  () => mBtn.classList.add('on'));
+        audio.addEventListener('pause', () => mBtn.classList.remove('on'));
+        mBtn.addEventListener('click', e => {
+            e.stopPropagation();
+            audio.paused ? audio.play().catch(() => {}) : audio.pause();
+        });
+        const tryPlay = () => {
+            audio.play().then(() => {}).catch(() => {});
+        };
+        tryPlay();
+        ['click','touchstart','keydown'].forEach(ev => window.addEventListener(ev, () => { if (audio.paused) audio.play().catch(() => {}); }, { once: true, capture: true }));
+    }
+
+    // Smooth anchor scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            const el = document.querySelector(a.getAttribute('href'));
+            if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth' }); }
         });
     });
-
-    // ==========================================
-    // MUSIC PLAYER TOGGLE
-    // ==========================================
-    const musicToggle = document.getElementById('musicToggle');
-    const bgMusic = document.getElementById('bgMusic');
-
-    if (musicToggle && bgMusic) {
-        bgMusic.volume = 0.5;
-
-        bgMusic.addEventListener('play', () => {
-            musicToggle.classList.add('playing');
-        });
-
-        bgMusic.addEventListener('pause', () => {
-            musicToggle.classList.remove('playing');
-        });
-
-        musicToggle.addEventListener('click', (e) => {
-            e.stopPropagation(); // Stop propagation so it doesn't trigger the window-level interaction play
-            if (bgMusic.paused) {
-                bgMusic.play().catch(e => console.log('Autoplay prevented', e));
-            } else {
-                bgMusic.pause();
-            }
-        });
-
-        // Helper to remove all interaction listeners once music starts
-        const removeInteractionListeners = () => {
-            window.removeEventListener('click', startOnInteraction, { capture: true });
-            window.removeEventListener('touchstart', startOnInteraction, { capture: true });
-            window.removeEventListener('pointerdown', startOnInteraction, { capture: true });
-            window.removeEventListener('keydown', startOnInteraction, { capture: true });
-        };
-
-        // 1. Try to play immediately on load
-        const tryImmediatePlay = () => {
-            bgMusic.play()
-                .then(() => {
-                    console.log('Autoplay succeeded immediately!');
-                    removeInteractionListeners();
-                })
-                .catch((error) => {
-                    console.log('Autoplay blocked by browser policy, waiting for first interaction...', error);
-                });
-        };
-
-        // 2. Fallback: play on first user interaction if blocked
-        const startOnInteraction = () => {
-            if (bgMusic.paused) {
-                bgMusic.play()
-                    .then(() => {
-                        removeInteractionListeners();
-                    })
-                    .catch((err) => console.log('Play failed on interaction', err));
-            } else {
-                removeInteractionListeners();
-            }
-        };
-
-        // Run the immediate play attempt
-        tryImmediatePlay();
-
-        // Register interaction fallbacks using capture phase on window
-        window.addEventListener('click', startOnInteraction, { capture: true, once: true });
-        window.addEventListener('touchstart', startOnInteraction, { capture: true, once: true });
-        window.addEventListener('pointerdown', startOnInteraction, { capture: true, once: true });
-        window.addEventListener('keydown', startOnInteraction, { capture: true, once: true });
-    }
 
 });

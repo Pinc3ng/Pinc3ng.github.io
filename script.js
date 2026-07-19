@@ -87,12 +87,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const topBtn  = document.getElementById('backToTop');
     const scrollHint = document.getElementById('scrollHint');
 
-    const isSubpage = !!document.querySelector('.page-header') || !document.querySelector('.hero');
-
     function updateNavbar() {
         const y = window.scrollY;
         if (navbar) {
-            if (isSubpage || y > 40) {
+            if (y > 40) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');

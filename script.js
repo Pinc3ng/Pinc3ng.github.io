@@ -123,17 +123,27 @@ document.addEventListener('DOMContentLoaded', () => {
     // SCROLL REVEAL
     // ==========================================
     const revEls = document.querySelectorAll('.r-up, .r-left, .r-right');
-    const revObs = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); revObs.unobserve(e.target); } });
-    }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
-    revEls.forEach(el => revObs.observe(el));
 
-    // Initial above-fold reveal
-    setTimeout(() => {
-        revEls.forEach(el => {
-            if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('on');
-        });
-    }, 80);
+    if ('IntersectionObserver' in window) {
+        const revObs = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('on');
+                    revObs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.01, rootMargin: '50px 0px 50px 0px' });
+
+        revEls.forEach(el => revObs.observe(el));
+    }
+
+    // Fail-safe: ensure all elements become visible shortly after load
+    function revealAll() {
+        revEls.forEach(el => el.classList.add('on'));
+    }
+    revealAll();
+    setTimeout(revealAll, 150);
+    window.addEventListener('load', revealAll);
 
     // ==========================================
     // STAT COUNTER

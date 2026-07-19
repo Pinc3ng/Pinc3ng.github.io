@@ -558,7 +558,7 @@ body::after {
    SECTION BASE
    ========================================== */
 .section { padding: 100px 0; }
-.section-dark { background: var(--bg-2); }
+.section-dark { background: transparent; }
 
 .section-label {
     font-family: var(--mono);

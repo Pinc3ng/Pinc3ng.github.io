@@ -87,12 +87,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const topBtn  = document.getElementById('backToTop');
     const scrollHint = document.getElementById('scrollHint');
 
-    window.addEventListener('scroll', () => {
+    const isSubpage = !!document.querySelector('.page-header') || !document.querySelector('.hero');
+
+    function updateNavbar() {
         const y = window.scrollY;
-        if (navbar) { y > 40 ? navbar.classList.add('scrolled') : navbar.classList.remove('scrolled'); }
+        if (navbar) {
+            if (isSubpage || y > 40) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
         if (topBtn) { y > 500 ? topBtn.classList.add('show') : topBtn.classList.remove('show'); }
         if (scrollHint) { y > 80 ? scrollHint.classList.add('gone') : scrollHint.classList.remove('gone'); }
-    }, { passive: true });
+    }
+
+    updateNavbar();
+    window.addEventListener('scroll', updateNavbar, { passive: true });
 
     if (topBtn) topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 

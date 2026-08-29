@@ -103,12 +103,16 @@ button {
     font-family: inherit;
 }
 
-/* UNIVERSAL 100% GUARANTEED NATIVE CURSOR (Zero disappearing bug) */
-*, *::before, *::after, html, body {
-    cursor: auto !important;
+/* ==========================================================
+   BULLETPROOF NATIVE CURSOR SYSTEM (100% PERMANENT VISIBILITY)
+   ========================================================== */
+html, body, div, span, p, h1, h2, h3, h4, h5, h6, section, nav, footer, header, main, ul, li {
+    cursor: default !important;
 }
 
-a, button, [role="button"], .btn, .f-btn, .sk-tab, .ex-tab, .nav-card, .proj-card, .skill-item, .cert-item, .p-link, .s-link, .back-top, .hero-chip, input[type="submit"], input[type="button"] {
+a, button, [role="button"], input[type="submit"], input[type="button"], select,
+.nav-link, .nav-logo, .nav-toggle, .btn, .f-btn, .sk-tab, .ex-tab, 
+.nav-card, .proj-card, .skill-item, .cert-item, .c-card, .s-link, .p-link, .back-top, .hero-chip {
     cursor: pointer !important;
 }
 
@@ -1328,4 +1332,5 @@ input, textarea {
     .hero-stats { gap: 20px; flex-wrap: wrap; justify-content: center; }
     .about-body, .form-wrap { padding: 26px; }
 }
+
 

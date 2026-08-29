@@ -63,7 +63,6 @@ html {
     overflow-x: hidden;
     background-color: var(--bg-base);
     color: var(--text-primary);
-    cursor: none;
 }
 
 body {
@@ -73,7 +72,6 @@ body {
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
-    cursor: none;
     min-height: 100vh;
     position: relative;
 }
@@ -103,6 +101,15 @@ img {
 }
 button {
     font-family: inherit;
+}
+
+/* Instant 0ms Native Pointer Cursor */
+a, button, .nav-card, .proj-card, .skill-item, .cert-item, .f-btn, .sk-tab, .ex-tab, .back-top, .s-link, .p-link, .hero-chip {
+    cursor: pointer;
+}
+
+#cur-dot, #cur-ring, .trail {
+    display: none !important;
 }
 
 /* ==========================================

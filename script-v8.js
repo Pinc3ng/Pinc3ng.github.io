@@ -129,39 +129,8 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(loop);
     }
 
-    // 3. HARDWARE-ACCELERATED CURSOR (60FPS TRANSFORM)
-    const dot  = document.getElementById('cur-dot');
-    const ring = document.getElementById('cur-ring');
-    let mX = -100, mY = -100;
-    let rX = -100, rY = -100;
-
-    if (dot && ring) {
-        window.addEventListener('mousemove', e => {
-            mX = e.clientX;
-            mY = e.clientY;
-            dot.style.transform = `translate3d(${mX}px, ${mY}px, 0) translate(-50%, -50%)`;
-        }, { passive: true });
-
-        function animateRing() {
-            rX += (mX - rX) * 0.18;
-            rY += (mY - rY) * 0.18;
-            ring.style.transform = `translate3d(${rX}px, ${rY}px, 0) translate(-50%, -50%)`;
-            requestAnimationFrame(animateRing);
-        }
-        requestAnimationFrame(animateRing);
-
-        const hoverEls = document.querySelectorAll('a, button, input, textarea, .nav-card, .proj-card, .t-item, .cert-item, .skill-item, .hero-chip');
-        hoverEls.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                dot.classList.add('hover');
-                ring.classList.add('hover');
-            });
-            el.addEventListener('mouseleave', () => {
-                dot.classList.remove('hover');
-                ring.classList.remove('hover');
-            });
-        });
-    }
+    // 3. NATIVE HARDWARE CURSOR (0ms Instant Latency)
+    // Custom cursor removed to ensure natural zero-delay interaction.
 
     // 4. LIVE HUD CLOCK
     const hudTime = document.getElementById('hudTime');

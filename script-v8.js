@@ -1,34 +1,26 @@
 /* ==========================================================
-   VINCENT PORTFOLIO — 60-120 FPS ULTRA SMOOTH SCRIPT
-   High Performance · Zero Lag · GPU Optimized
+   VINCENT PORTFOLIO — ROCK-SOLID STABLE JAVASCRIPT
+   100% Native Cursor Reliability · Ultra Smooth · Zero Glitch
    ========================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
 
     // 1. SCROLL PROGRESS
     const scrollProgress = document.getElementById('scroll-progress');
-    let isScrolling = false;
     window.addEventListener('scroll', () => {
-        if (!isScrolling) {
-            window.requestAnimationFrame(() => {
-                if (scrollProgress) {
-                    const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
-                    const percent = totalScroll > 0 ? (window.scrollY / totalScroll) * 100 : 0;
-                    scrollProgress.style.width = percent + '%';
-                }
-                isScrolling = false;
-            });
-            isScrolling = true;
+        if (scrollProgress) {
+            const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+            const percent = totalScroll > 0 ? (window.scrollY / totalScroll) * 100 : 0;
+            scrollProgress.style.width = percent + '%';
         }
     }, { passive: true });
 
-    // 2. ULTRA LIGHTWEIGHT HIGH-FPS CANVAS (NO HEAVY SHADOW BLUR)
+    // 2. LIGHTWEIGHT CLEAN BACKGROUND CANVAS
     const canvas = document.getElementById('bg-canvas');
     if (canvas) {
         const ctx = canvas.getContext('2d', { alpha: true });
         let W = 0, H = 0;
         let particles = [];
-        let mouseX = -1000, mouseY = -1000;
 
         function resize() {
             W = canvas.width = window.innerWidth;
@@ -40,41 +32,20 @@ document.addEventListener('DOMContentLoaded', () => {
             initParticles();
         }, { passive: true });
 
-        window.addEventListener('mousemove', e => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        }, { passive: true });
-
-        window.addEventListener('mouseleave', () => {
-            mouseX = -1000;
-            mouseY = -1000;
-        }, { passive: true });
-
-        const COLORS = ['rgba(0, 240, 255, 0.7)', 'rgba(138, 75, 254, 0.7)', 'rgba(255, 42, 133, 0.6)', 'rgba(0, 245, 155, 0.7)'];
+        const COLORS = ['rgba(0, 240, 255, 0.65)', 'rgba(138, 75, 254, 0.65)', 'rgba(255, 42, 133, 0.55)', 'rgba(0, 245, 155, 0.65)'];
 
         class Particle {
             constructor() {
                 this.x = Math.random() * W;
                 this.y = Math.random() * H;
-                this.vx = (Math.random() - 0.5) * 0.45;
-                this.vy = (Math.random() - 0.5) * 0.45;
-                this.r = Math.random() * 1.6 + 0.8;
+                this.vx = (Math.random() - 0.5) * 0.4;
+                this.vy = (Math.random() - 0.5) * 0.4;
+                this.r = Math.random() * 1.5 + 0.8;
                 this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
             }
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
-
-                // Gentle mouse repulsion (fast squared distance check)
-                const dx = mouseX - this.x;
-                const dy = mouseY - this.y;
-                const distSq = dx * dx + dy * dy;
-                if (distSq < 16000 && distSq > 0) { // ~125px radius
-                    const force = (16000 - distSq) / 16000;
-                    this.x -= (dx / Math.sqrt(distSq)) * force * 2.2;
-                    this.y -= (dy / Math.sqrt(distSq)) * force * 2.2;
-                }
-
                 if (this.x < -10) this.x = W + 10;
                 if (this.x > W + 10) this.x = -10;
                 if (this.y < -10) this.y = H + 10;
@@ -89,19 +60,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function initParticles() {
-            // Keep count optimized for 120 FPS performance (35 to 55 max)
-            const count = Math.min(Math.floor(W / 28), 50);
+            const count = Math.min(Math.floor(W / 32), 45);
             particles = Array.from({ length: count }, () => new Particle());
         }
         initParticles();
 
-        const MAX_DIST_SQ = 120 * 120; // 14400
+        const MAX_DIST_SQ = 125 * 125;
 
         function loop() {
             ctx.clearRect(0, 0, W, H);
+            ctx.lineWidth = 0.7;
 
-            // Draw connecting lines with zero heavy shadowBlur
-            ctx.lineWidth = 0.75;
             for (let i = 0; i < particles.length; i++) {
                 const p1 = particles[i];
                 p1.update();
@@ -129,10 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(loop);
     }
 
-    // 3. NATIVE HARDWARE CURSOR (0ms Instant Latency)
-    // Custom cursor removed to ensure natural zero-delay interaction.
-
-    // 4. LIVE HUD CLOCK
+    // 3. LIVE HUD CLOCK
     const hudTime = document.getElementById('hudTime');
     if (hudTime) {
         function updateClock() {
@@ -144,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(updateClock, 1000);
     }
 
-    // 5. TYPEWRITER (CLEAN INTERVAL)
+    // 4. TYPEWRITER EFFECT
     const typedEl = document.querySelector('.hero-typed');
     if (typedEl) {
         const phrases = [
@@ -182,33 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(runType, 500);
     }
 
-    // 6. 3D CARD TILT (REQUEST ANIMATION FRAME OPTIMIZED)
-    function setupTilt(cards, maxDeg = 8) {
-        cards.forEach(card => {
-            let rafId = null;
-            card.addEventListener('mousemove', e => {
-                if (rafId) cancelAnimationFrame(rafId);
-                rafId = requestAnimationFrame(() => {
-                    const rect = card.getBoundingClientRect();
-                    const x = (e.clientX - rect.left) / rect.width - 0.5;
-                    const y = (e.clientY - rect.top) / rect.height - 0.5;
-                    card.style.transform = `perspective(800px) rotateX(${(-y * maxDeg).toFixed(1)}deg) rotateY(${(x * maxDeg).toFixed(1)}deg) translateY(-6px)`;
-                });
-            }, { passive: true });
-
-            card.addEventListener('mouseleave', () => {
-                if (rafId) cancelAnimationFrame(rafId);
-                card.style.transform = '';
-            });
-        });
-    }
-
-    setupTilt(document.querySelectorAll('.nav-card'), 8);
-    setupTilt(document.querySelectorAll('.proj-card'), 6);
-    setupTilt(document.querySelectorAll('.skill-item'), 8);
-    setupTilt(document.querySelectorAll('.cert-item'), 6);
-
-    // 7. NAVBAR SCROLL
+    // 5. NAVBAR SCROLL
     const navbar = document.getElementById('navbar');
     const topBtn = document.getElementById('backToTop');
     const scrollHint = document.getElementById('scrollHint');
@@ -242,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 8. SCROLL REVEAL (INTERSECTION OBSERVER)
+    // 6. SCROLL REVEAL (INTERSECTION OBSERVER)
     const revElements = document.querySelectorAll('.r-up, .r-left, .r-right');
     if ('IntersectionObserver' in window) {
         const obs = new IntersectionObserver(entries => {
@@ -255,12 +195,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { threshold: 0.05 });
         revElements.forEach(el => obs.observe(el));
     }
-    // Fail-safe
     setTimeout(() => {
         revElements.forEach(el => el.classList.add('on'));
     }, 100);
 
-    // 9. STAT COUNTERS
+    // 7. STAT COUNTERS
     const counts = document.querySelectorAll('.count[data-n]');
     let hasCounted = false;
     const statsObserver = new IntersectionObserver(entries => {
@@ -287,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroStats = document.querySelector('.hero-stats');
     if (heroStats) statsObserver.observe(heroStats);
 
-    // 10. SKILL TABS
+    // 8. SKILL TABS SYSTEM
     document.querySelectorAll('.sk-tab').forEach(tab => {
         tab.addEventListener('click', () => {
             document.querySelectorAll('.sk-tab').forEach(t => t.classList.remove('active'));
@@ -301,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 11. PROJECT FILTER
+    // 9. PROJECT FILTER SYSTEM
     document.querySelectorAll('.f-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             document.querySelectorAll('.f-btn').forEach(b => b.classList.remove('active'));
@@ -317,7 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 12. EXPERIENCE TABS
+    // 10. EXPERIENCE TABS SYSTEM
     document.querySelectorAll('.ex-tab').forEach(tab => {
         tab.addEventListener('click', () => {
             document.querySelectorAll('.ex-tab').forEach(t => t.classList.remove('active'));
@@ -331,7 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 13. CONTACT FORM
+    // 11. CONTACT FORM
     const cForm   = document.getElementById('contactForm');
     const oForm   = document.getElementById('otpForm');
     const sentEl  = document.getElementById('otpSentEmail');

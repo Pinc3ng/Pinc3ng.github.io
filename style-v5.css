@@ -1,4 +1,4 @@
-/* ==========================================
+﻿/* ==========================================
    VINCENT PORTFOLIO — ULTRA MINIMAL
    Clean Dark · White Accents · Premium
    ========================================== */
@@ -43,7 +43,7 @@
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
-    cursor: none;
+    cursor: pointer;
     background-color: #080711;
     color: var(--text);
 }
@@ -55,7 +55,7 @@ body {
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
-    cursor: none;
+    cursor: pointer;
     position: relative;
     z-index: 1;
     min-height: 100vh;
@@ -217,7 +217,7 @@ body::after {
     display: flex;
     align-items: center;
     gap: 2px;
-    cursor: none;
+    cursor: pointer;
 }
 
 .logo-name { color: var(--text); }
@@ -246,7 +246,7 @@ body::after {
     padding: 7px 16px;
     border-radius: 8px;
     transition: all var(--t-fast);
-    cursor: none;
+    cursor: pointer;
     letter-spacing: 0.01em;
 }
 
@@ -268,7 +268,7 @@ body::after {
     gap: 5px;
     background: none;
     border: none;
-    cursor: none;
+    cursor: pointer;
     padding: 8px;
 }
 
@@ -521,7 +521,7 @@ body::after {
     font-size: 0.85rem;
     font-weight: 600;
     letter-spacing: 0.01em;
-    cursor: none;
+    cursor: pointer;
     border: none;
     transition: var(--t);
     position: relative;
@@ -638,7 +638,7 @@ body::after {
     flex-direction: column;
     gap: 12px;
     transition: all var(--t-fast);
-    cursor: none;
+    cursor: pointer;
     position: relative;
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
 }
@@ -788,7 +788,7 @@ body::after {
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 12px;
-    cursor: none;
+    cursor: pointer;
     transition: all var(--t-fast);
     position: relative;
     letter-spacing: 0.01em;
@@ -826,7 +826,7 @@ body::after {
     color: #ffffff;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
     transition: all var(--t-fast);
-    cursor: none;
+    cursor: pointer;
 }
 
 .skill-item:hover {
@@ -856,7 +856,7 @@ body::after {
     border-radius: 100px;
     background: none;
     color: var(--text-3);
-    cursor: none;
+    cursor: pointer;
     transition: all var(--t-fast);
     letter-spacing: 0.01em;
 }
@@ -880,7 +880,7 @@ body::after {
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
     display: flex;
     flex-direction: column;
-    cursor: none;
+    cursor: pointer;
     transition: all var(--t-fast);
     position: relative;
 }
@@ -940,7 +940,7 @@ body::after {
     font-size: 0.85rem;
     color: var(--text-2);
     transition: all var(--t-fast);
-    cursor: none;
+    cursor: pointer;
 }
 
 .p-link:hover {
@@ -995,7 +995,7 @@ body::after {
     color: var(--text-3);
     background: none;
     border: none;
-    cursor: none;
+    cursor: pointer;
     transition: color var(--t-fast);
     position: relative;
     display: flex;
@@ -1032,7 +1032,7 @@ body::after {
     overflow: hidden;
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
     transition: all var(--t-fast);
-    cursor: none;
+    cursor: pointer;
 }
 
 .t-item:hover {
@@ -1107,7 +1107,7 @@ body::after {
     background: var(--bg-card);
     padding: 28px;
     transition: background var(--t-fast);
-    cursor: none;
+    cursor: pointer;
 }
 
 .cert-item:hover { background: rgba(255,255,255,0.025); }
@@ -1190,7 +1190,7 @@ body::after {
     border-radius: 16px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
     transition: all var(--t-fast);
-    cursor: none;
+    cursor: pointer;
 }
 
 .c-card:hover {
@@ -1244,7 +1244,7 @@ body::after {
     background: rgba(18, 18, 26, 0.82);
     backdrop-filter: blur(12px);
     transition: all var(--t-fast);
-    cursor: none;
+    cursor: pointer;
 }
 
 .s-link:hover {
@@ -1349,7 +1349,7 @@ body::after {
     font-size: 0.8rem;
     color: var(--text-3);
     transition: color var(--t-fast);
-    cursor: none;
+    cursor: pointer;
 }
 
 .footer-links a:hover { color: var(--text-2); }
@@ -1376,7 +1376,7 @@ body::after {
     opacity: 0; pointer-events: none;
     transform: translateY(12px);
     transition: all var(--t);
-    cursor: none;
+    cursor: pointer;
     backdrop-filter: blur(12px);
 }
 
@@ -1402,7 +1402,7 @@ body::after {
     display: flex; align-items: center; justify-content: center;
     font-size: 0.9rem;
     z-index: 900;
-    cursor: none;
+    cursor: pointer;
     transition: all var(--t-fast);
     backdrop-filter: blur(12px);
 }
@@ -1550,5 +1550,6 @@ body::after {
     50% { transform: translate3d(-70px, 90px, 0) scale(1.12); }
     100% { transform: translate3d(50px, -60px, 0) scale(0.92); }
 }
+
 
 

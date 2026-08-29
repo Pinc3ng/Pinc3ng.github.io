@@ -1,4 +1,4 @@
-/* ==========================================
+﻿/* ==========================================
    VINCENT PORTFOLIO — HYPER v7
    Cyberpunk · Neon · 3D Interactive · Particles
    ========================================== */
@@ -56,7 +56,7 @@
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
-    cursor: none;
+    cursor: pointer;
     background: var(--bg);
     color: var(--t);
 }
@@ -68,7 +68,7 @@ body {
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
-    cursor: none;
+    cursor: pointer;
     min-height: 100vh;
 }
 
@@ -319,7 +319,7 @@ body::after {
     display: flex;
     align-items: center;
     gap: 2px;
-    cursor: none;
+    cursor: pointer;
     letter-spacing: -0.02em;
 }
 .logo-name { color: var(--t); }
@@ -350,7 +350,7 @@ body::after {
     padding: 7px 16px;
     border-radius: 10px;
     transition: all var(--tr-f);
-    cursor: none;
+    cursor: pointer;
     letter-spacing: 0.03em;
     text-transform: lowercase;
 }
@@ -363,7 +363,7 @@ body::after {
     box-shadow: 0 0 16px rgba(124,58,237,0.1), inset 0 1px 0 rgba(255,255,255,0.04);
 }
 
-.nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: none; padding: 8px; }
+.nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
 .h-line { width: 22px; height: 1.5px; background: var(--t); transition: var(--tr); border-radius: 1px; }
 .nav-toggle.open .h-line:nth-child(1) { transform: translateY(6.5px) rotate(45deg); background: var(--v-l); }
 .nav-toggle.open .h-line:nth-child(2) { opacity: 0; }
@@ -674,7 +674,7 @@ body::after {
     font-size: 0.88rem;
     font-weight: 600;
     letter-spacing: 0.02em;
-    cursor: none;
+    cursor: pointer;
     border: none;
     transition: all var(--tr);
     position: relative;
@@ -805,7 +805,7 @@ body::after {
     padding: 36px 32px;
     display: flex; flex-direction: column; gap: 12px;
     transition: all .3s var(--ease);
-    cursor: none;
+    cursor: pointer;
     position: relative;
     overflow: hidden;
     box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04);
@@ -937,7 +937,7 @@ body::after {
     font-size: 0.86rem; font-weight: 600; color: var(--t3);
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.07);
-    border-radius: var(--r); cursor: none; transition: all var(--tr-f);
+    border-radius: var(--r); cursor: pointer; transition: all var(--tr-f);
     font-family: var(--font); letter-spacing: 0.01em;
 }
 .sk-tab:hover { color: var(--t2); background: rgba(124,58,237,0.09); border-color: rgba(124,58,237,0.28); }
@@ -963,7 +963,7 @@ body::after {
     font-size: 0.91rem; font-weight: 600; color: var(--t);
     box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     transition: all .25s var(--ease);
-    cursor: none;
+    cursor: pointer;
     position: relative; overflow: hidden;
     will-change: transform;
 }
@@ -989,7 +989,7 @@ body::after {
 .f-btn {
     padding: 8px 20px; font-size: 0.78rem; font-weight: 500;
     border: 1px solid rgba(124,58,237,0.18); border-radius: 100px;
-    background: none; color: var(--t3); cursor: none;
+    background: none; color: var(--t3); cursor: pointer;
     transition: all var(--tr-f); letter-spacing: 0.02em; font-family: var(--font);
 }
 .f-btn:hover { color: var(--t2); border-color: rgba(124,58,237,0.4); background: rgba(124,58,237,0.06); }
@@ -1005,7 +1005,7 @@ body::after {
     overflow: hidden;
     box-shadow: 0 12px 40px rgba(0,0,0,0.35);
     display: flex; flex-direction: column;
-    cursor: none; position: relative;
+    cursor: pointer; position: relative;
     transition: all .3s var(--ease);
     will-change: transform;
 }
@@ -1061,7 +1061,7 @@ body::after {
     border: 1px solid rgba(124,58,237,0.5); border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     font-size: 0.9rem; color: var(--t2);
-    transition: all var(--tr-f); cursor: none;
+    transition: all var(--tr-f); cursor: pointer;
     background: rgba(124,58,237,0.12);
 }
 .p-link:hover { background: rgba(124,58,237,0.3); color: var(--t); transform: scale(1.12); box-shadow: 0 0 24px rgba(124,58,237,0.5); }
@@ -1083,7 +1083,7 @@ body::after {
 .exp-tabs { display: flex; gap: 4px; margin-bottom: 52px; border-bottom: 1px solid rgba(124,58,237,0.12); }
 .ex-tab {
     padding: 12px 26px; font-size: 0.85rem; font-weight: 600;
-    color: var(--t3); background: none; border: none; cursor: none;
+    color: var(--t3); background: none; border: none; cursor: pointer;
     transition: color var(--tr-f); position: relative;
     display: flex; align-items: center; gap: 8px; font-family: var(--font);
 }
@@ -1109,7 +1109,7 @@ body::after {
     border-radius: 22px; overflow: hidden;
     box-shadow: 0 8px 30px rgba(0,0,0,0.3);
     transition: all .3s var(--ease);
-    cursor: none; position: relative;
+    cursor: pointer; position: relative;
     will-change: transform;
 }
 .t-item::before {
@@ -1136,7 +1136,7 @@ body::after {
     backdrop-filter: blur(16px);
     border: 1px solid rgba(124,58,237,0.13);
     border-radius: 20px; padding: 32px;
-    transition: all .3s var(--ease); cursor: none; position: relative; overflow: hidden;
+    transition: all .3s var(--ease); cursor: pointer; position: relative; overflow: hidden;
     will-change: transform;
 }
 .cert-item::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--grad); opacity: 0; transition: opacity .3s; }
@@ -1163,7 +1163,7 @@ body::after {
     border: 1px solid rgba(124,58,237,0.15);
     border-radius: 18px;
     box-shadow: 0 6px 24px rgba(0,0,0,0.3);
-    transition: all var(--tr-f); cursor: none;
+    transition: all var(--tr-f); cursor: pointer;
 }
 .c-card:hover { border-color: rgba(124,58,237,0.45); background: rgba(124,58,237,0.09); transform: translateX(8px); box-shadow: 0 8px 30px rgba(124,58,237,0.12); }
 .c-icon { width: 46px; height: 46px; border: 1px solid rgba(124,58,237,0.28); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.0rem; color: var(--v-l); flex-shrink: 0; background: rgba(124,58,237,0.1); box-shadow: 0 0 16px rgba(124,58,237,0.18); }
@@ -1172,7 +1172,7 @@ body::after {
 .c-card a:hover .c-val, .c-val a:hover { color: var(--v-l); }
 
 .social-row { display: flex; gap: 10px; }
-.s-link { width: 48px; height: 48px; border: 1px solid rgba(124,58,237,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.0rem; color: var(--t2); background: rgba(7,7,26,0.85); backdrop-filter: blur(12px); transition: all var(--tr-f); cursor: none; }
+.s-link { width: 48px; height: 48px; border: 1px solid rgba(124,58,237,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.0rem; color: var(--t2); background: rgba(7,7,26,0.85); backdrop-filter: blur(12px); transition: all var(--tr-f); cursor: pointer; }
 .s-link:hover { border-color: rgba(124,58,237,0.55); color: var(--t); background: rgba(124,58,237,0.18); transform: translateY(-5px); box-shadow: 0 8px 24px rgba(124,58,237,0.25); }
 
 /* Form */
@@ -1213,7 +1213,7 @@ body::after {
 .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 24px; }
 .footer-brand { font-family: var(--mono); font-size: 0.85rem; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 600; }
 .footer-links { display: flex; gap: 28px; }
-.footer-links a { font-size: 0.81rem; color: var(--t3); transition: color var(--tr-f); cursor: none; letter-spacing: 0.01em; }
+.footer-links a { font-size: 0.81rem; color: var(--t3); transition: color var(--tr-f); cursor: pointer; letter-spacing: 0.01em; }
 .footer-links a:hover { color: var(--v-l); }
 .footer-copy { font-size: 0.74rem; color: var(--t3); font-family: var(--mono); }
 
@@ -1231,7 +1231,7 @@ body::after {
     font-size: 0.9rem; z-index: 900;
     opacity: 0; pointer-events: none;
     transform: translateY(16px);
-    transition: all var(--tr); cursor: none;
+    transition: all var(--tr); cursor: pointer;
     backdrop-filter: blur(16px);
     box-shadow: 0 4px 24px rgba(124,58,237,0.18);
 }
@@ -1245,7 +1245,7 @@ body::after {
     border-radius: 14px;
     background: rgba(7,7,26,0.92); color: var(--t3);
     display: flex; align-items: center; justify-content: center;
-    font-size: 0.9rem; z-index: 900; cursor: none;
+    font-size: 0.9rem; z-index: 900; cursor: pointer;
     transition: all var(--tr-f); backdrop-filter: blur(16px);
 }
 .music-btn:hover { border-color: rgba(124,58,237,0.45); color: var(--t2); }
@@ -1290,3 +1290,4 @@ body::after {
     .about-body { padding: 28px; }
     .form-wrap { padding: 28px; }
 }
+

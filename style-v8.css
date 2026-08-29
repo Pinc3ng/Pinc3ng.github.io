@@ -1,4 +1,4 @@
-/* ==========================================================
+﻿/* ==========================================================
    VINCENT PORTFOLIO — LUMINOUS HYPER TECH v8 (HIGH FPS OPTIMIZED)
    Luminous Cyber-Luxury · 60-120 FPS Buttery Smooth · GPU Accelerated
    ========================================================== */
@@ -355,7 +355,7 @@ a, button, .nav-card, .proj-card, .skill-item, .cert-item, .f-btn, .sk-tab, .ex-
     display: flex;
     align-items: center;
     gap: 4px;
-    cursor: none;
+    cursor: pointer;
     padding: 6px 12px;
     border-radius: var(--radius-sm);
     background: rgba(255, 255, 255, 0.03);
@@ -429,7 +429,7 @@ a, button, .nav-card, .proj-card, .skill-item, .cert-item, .f-btn, .sk-tab, .ex-
     padding: 8px 18px;
     border-radius: var(--radius-pill);
     transition: all var(--trans-fast);
-    cursor: none;
+    cursor: pointer;
 }
 
 .nav-link:hover {
@@ -451,7 +451,7 @@ a, button, .nav-card, .proj-card, .skill-item, .cert-item, .f-btn, .sk-tab, .ex-
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-sm);
-    cursor: none;
+    cursor: pointer;
     padding: 10px;
 }
 
@@ -796,7 +796,7 @@ a, button, .nav-card, .proj-card, .skill-item, .cert-item, .f-btn, .sk-tab, .ex-
     font-size: 0.92rem;
     font-weight: 700;
     letter-spacing: 0.02em;
-    cursor: none;
+    cursor: pointer;
     border: none;
     transition: transform var(--trans-fast), box-shadow var(--trans-fast), background var(--trans-fast);
     font-family: var(--font-main);
@@ -936,7 +936,7 @@ a, button, .nav-card, .proj-card, .skill-item, .cert-item, .f-btn, .sk-tab, .ex-
     flex-direction: column;
     gap: 14px;
     transition: transform var(--trans-normal), border-color var(--trans-normal), box-shadow var(--trans-normal);
-    cursor: none;
+    cursor: pointer;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
@@ -1056,7 +1056,7 @@ a, button, .nav-card, .proj-card, .skill-item, .cert-item, .f-btn, .sk-tab, .ex-
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-pill);
-    cursor: none;
+    cursor: pointer;
     transition: all var(--trans-fast);
 }
 .sk-tab.active {
@@ -1075,7 +1075,7 @@ a, button, .nav-card, .proj-card, .skill-item, .cert-item, .f-btn, .sk-tab, .ex-
     border-radius: var(--radius-md);
     font-size: 0.95rem; font-weight: 700; color: #ffffff;
     transition: transform var(--trans-fast), border-color var(--trans-fast);
-    cursor: none;
+    cursor: pointer;
 }
 .skill-item:hover {
     background: rgba(0, 240, 255, 0.12);
@@ -1092,7 +1092,7 @@ a, button, .nav-card, .proj-card, .skill-item, .cert-item, .f-btn, .sk-tab, .ex-
     border-radius: var(--radius-pill);
     background: rgba(255, 255, 255, 0.03);
     color: var(--text-muted);
-    cursor: none;
+    cursor: pointer;
     transition: all var(--trans-fast);
 }
 .f-btn.active {
@@ -1108,7 +1108,7 @@ a, button, .nav-card, .proj-card, .skill-item, .cert-item, .f-btn, .sk-tab, .ex-
     overflow: hidden;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
     display: flex; flex-direction: column;
-    cursor: none;
+    cursor: pointer;
     transition: transform var(--trans-normal), border-color var(--trans-normal);
 }
 .proj-card:hover {
@@ -1135,7 +1135,7 @@ a, button, .nav-card, .proj-card, .skill-item, .cert-item, .f-btn, .sk-tab, .ex-
     width: 50px; height: 50px;
     border: 1px solid rgba(0, 240, 255, 0.6); border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: 1rem; color: #ffffff; cursor: none;
+    font-size: 1rem; color: #ffffff; cursor: pointer;
     background: rgba(0, 240, 255, 0.15);
     transition: transform var(--trans-fast), background var(--trans-fast);
 }
@@ -1157,7 +1157,7 @@ a, button, .nav-card, .proj-card, .skill-item, .cert-item, .f-btn, .sk-tab, .ex-
 .exp-tabs { display: flex; gap: 6px; margin-bottom: 56px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
 .ex-tab {
     padding: 14px 30px; font-size: 0.92rem; font-weight: 700;
-    color: var(--text-muted); background: none; border: none; cursor: none;
+    color: var(--text-muted); background: none; border: none; cursor: pointer;
     transition: color var(--trans-fast); position: relative;
     display: flex; align-items: center; gap: 10px;
 }
@@ -1175,7 +1175,7 @@ a, button, .nav-card, .proj-card, .skill-item, .cert-item, .f-btn, .sk-tab, .ex-
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: var(--radius-lg); overflow: hidden;
     transition: transform var(--trans-normal), border-color var(--trans-normal);
-    cursor: none;
+    cursor: pointer;
 }
 .t-item:hover { border-color: rgba(0, 240, 255, 0.45); transform: translateY(-5px); }
 .t-date { padding: 34px 28px; border-right: 1px solid rgba(255, 255, 255, 0.08); display: flex; align-items: flex-start; }
@@ -1194,7 +1194,7 @@ a, button, .nav-card, .proj-card, .skill-item, .cert-item, .f-btn, .sk-tab, .ex-
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: var(--radius-lg); padding: 34px;
     transition: transform var(--trans-normal), border-color var(--trans-normal);
-    cursor: none;
+    cursor: pointer;
 }
 .cert-item:hover { border-color: rgba(0, 240, 255, 0.45); transform: translateY(-5px); }
 .cert-icon { font-size: 1.8rem; color: var(--cyan); margin-bottom: 20px; }
@@ -1215,7 +1215,7 @@ a, button, .nav-card, .proj-card, .skill-item, .cert-item, .f-btn, .sk-tab, .ex-
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: var(--radius-md);
     transition: transform var(--trans-fast), border-color var(--trans-fast);
-    cursor: none;
+    cursor: pointer;
 }
 .c-card:hover { border-color: rgba(0, 240, 255, 0.5); transform: translateX(8px); }
 .c-icon { width: 48px; height: 48px; border: 1px solid rgba(0, 240, 255, 0.4); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 1.15rem; color: var(--cyan); flex-shrink: 0; background: rgba(0, 240, 255, 0.12); }
@@ -1223,7 +1223,7 @@ a, button, .nav-card, .proj-card, .skill-item, .cert-item, .f-btn, .sk-tab, .ex-
 .c-val { font-size: 0.95rem; color: #ffffff; font-weight: 600; }
 .c-card a:hover .c-val, .c-val a:hover { color: var(--cyan); }
 .social-row { display: flex; gap: 14px; }
-.s-link { width: 48px; height: 48px; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 1.15rem; color: #ffffff; background: rgba(13, 18, 38, 0.88); transition: all var(--trans-fast); cursor: none; }
+.s-link { width: 48px; height: 48px; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 1.15rem; color: #ffffff; background: rgba(13, 18, 38, 0.88); transition: all var(--trans-fast); cursor: pointer; }
 .s-link:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-4px); }
 
 /* Form */
@@ -1259,7 +1259,7 @@ a, button, .nav-card, .proj-card, .skill-item, .cert-item, .f-btn, .sk-tab, .ex-
 .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 24px; }
 .footer-brand { font-family: var(--font-mono); font-size: 0.92rem; font-weight: 700; background: var(--grad-aurora); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .footer-links { display: flex; gap: 32px; }
-.footer-links a { font-size: 0.88rem; font-weight: 600; color: var(--text-muted); transition: color var(--trans-fast); cursor: none; }
+.footer-links a { font-size: 0.88rem; font-weight: 600; color: var(--text-muted); transition: color var(--trans-fast); cursor: pointer; }
 .footer-links a:hover { color: var(--cyan); }
 .footer-copy { font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono); }
 
@@ -1276,7 +1276,7 @@ a, button, .nav-card, .proj-card, .skill-item, .cert-item, .f-btn, .sk-tab, .ex-
     opacity: 0; pointer-events: none;
     transform: translateY(20px);
     transition: all var(--trans-normal);
-    cursor: none;
+    cursor: pointer;
 }
 .back-top.show { opacity: 1; pointer-events: all; transform: translateY(0); }
 .back-top:hover { border-color: var(--cyan); color: #ffffff; transform: translateY(-4px); }
@@ -1317,3 +1317,4 @@ a, button, .nav-card, .proj-card, .skill-item, .cert-item, .f-btn, .sk-tab, .ex-
     .hero-stats { gap: 20px; flex-wrap: wrap; justify-content: center; }
     .about-body, .form-wrap { padding: 26px; }
 }
+

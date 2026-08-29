@@ -1,19 +1,23 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="About Vincent — Informatics Engineering student at Universitas Pelita Harapan.">
-    <title>Vincent — About</title>
+    <title>Vincent — About Me</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style-v6.css?v=7.0">
+    <link rel="stylesheet" href="style-v8.css?v=8.0">
 </head>
 <body>
 
-    <!-- Ambient Floating Visual Background -->
+    <!-- Scroll Progress Indicator -->
+    <div id="scroll-progress"></div>
+
+    <!-- Canvas Constellation Background -->
+    <canvas id="bg-canvas"></canvas>
     <div class="bg-ambient" aria-hidden="true">
         <div class="ambient-orb orb-1"></div>
         <div class="ambient-orb orb-2"></div>
@@ -22,15 +26,25 @@
         <div class="ambient-grid"></div>
     </div>
 
-
+    <!-- Custom Cursor -->
     <div id="cur-dot"></div>
     <div id="cur-ring"></div>
 
+    <!-- Navbar with Live HUD Clock -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
                 <span class="logo-name">vincent</span><span class="logo-dot-text">.dev</span><span class="logo-blink"></span>
             </a>
+
+            <!-- Live HUD Status -->
+            <div class="nav-hud-status">
+                <span class="hud-dot"></span>
+                <span>SYSTEM ONLINE</span>
+                <span style="opacity: 0.4;">|</span>
+                <span id="hudTime">14:30 WIB</span>
+            </div>
+
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html"      class="nav-link">home</a></li>
                 <li><a href="about.html"      class="nav-link active">about</a></li>
@@ -39,6 +53,7 @@
                 <li><a href="experience.html" class="nav-link">experience</a></li>
                 <li><a href="contact.html"    class="nav-link">contact</a></li>
             </ul>
+
             <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
                 <span class="h-line"></span>
                 <span class="h-line"></span>
@@ -49,8 +64,9 @@
 
     <div class="page-hd">
         <div class="container">
-            <div class="tag">// about me</div>
-            <h1 class="page-hd-title">A bit about<br>myself.</h1>
+            <div class="tag">// IDENTITY &amp; BACKGROUND</div>
+            <h1 class="page-hd-title">A Bit About <span>Myself.</span></h1>
+            <p class="page-hd-sub">Passionate engineer, problem solver, and tech creator based in Indonesia.</p>
         </div>
     </div>
 
@@ -84,15 +100,21 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="about-body r-right">
-                    <h2>Fifth-semester student with a genuine interest in tech</h2>
-                    <p class="about-para">Hello, my name is Vincent, and I am currently a fifth-semester Informatics Engineering student at Pelita Harapan University (UPH). I have a strong interest in technology and continuously strive to improve my knowledge and skills in the field of information technology.</p>
-                    <p class="about-para">Throughout my academic journey, I have gained proficiency in basic Microsoft Office applications and have participated in several university projects, including website development. These experiences have helped me strengthen my problem-solving abilities, technical skills, and understanding of software development processes.</p>
-                    <p class="about-para">In addition to technical skills, I am able to work effectively both independently and as part of a team. I value communication, collaboration, and responsibility in every project I undertake. I am always eager to learn new technologies and take on challenges that can contribute to my personal and professional growth.</p>
-                    <p class="about-para">Outside of academics, I enjoy listening to podcasts, which allow me to gain new perspectives and insights from various fields. Looking ahead, my long-term goal is to become a successful entrepreneur and create innovative solutions that can make a positive impact on society.</p>
-                    <a href="#" class="btn btn-outline" id="downloadCv" style="margin-top: 8px;">
-                        <i class="fas fa-download"></i> Download CV
-                    </a>
+                    <h2>Fifth-semester student with a relentless passion for high-impact tech</h2>
+                    <p class="about-para">Hello, I'm Vincent — currently a fifth-semester <strong>Informatics Engineering student at Universitas Pelita Harapan (UPH)</strong>. I thrive on building high-performance web applications, architecting clean code, and mastering cutting-edge software development ecosystems.</p>
+                    <p class="about-para">Throughout my academic and independent development journey, I have built multiple end-to-end full-stack projects, tackled algorithm scripting challenges, and collaborated in team agile sprints. These real-world challenges honed my structural problem-solving and full-lifecycle engineering capabilities.</p>
+                    <p class="about-para">Beyond code, I value clear technical communication, structured leadership, and rapid adaptability. I actively stay on top of the latest software engineering practices and tech trends, driven by my ultimate ambition to build innovative startups and empower the digital economy.</p>
+                    <p class="about-para">In my free time, I enjoy listening to insightful tech and business podcasts, exploring design systems, and continually leveling up my development toolkit.</p>
+                    <div style="margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap;">
+                        <a href="projects.html" class="btn btn-solid">
+                            <span>View My Projects</span> <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="contact.html" class="btn btn-outline">
+                            <span>Let's Connect</span> <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -105,9 +127,11 @@
                 <div class="footer-links">
                     <a href="about.html">About</a>
                     <a href="projects.html">Projects</a>
+                    <a href="skills.html">Skills</a>
+                    <a href="experience.html">Experience</a>
                     <a href="contact.html">Contact</a>
                 </div>
-                <div class="footer-copy">&copy; 2026 Vincent</div>
+                <div class="footer-copy">&copy; 2026 Vincent. Crafted with precision &amp; code.</div>
             </div>
         </div>
     </footer>
@@ -116,8 +140,6 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script src="script.js?v=7.0"></script>
+    <script src="script-v8.js?v=8.0"></script>
 </body>
 </html>
-
-

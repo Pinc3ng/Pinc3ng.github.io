@@ -1,4 +1,4 @@
-﻿/* ==========================================================
+/* ==========================================================
    VINCENT PORTFOLIO — LUMINOUS HYPER TECH v8 (HIGH FPS OPTIMIZED)
    Luminous Cyber-Luxury · 60-120 FPS Buttery Smooth · GPU Accelerated
    ========================================================== */
@@ -103,13 +103,24 @@ button {
     font-family: inherit;
 }
 
-/* Instant 0ms Native Pointer Cursor */
-a, button, .nav-card, .proj-card, .skill-item, .cert-item, .f-btn, .sk-tab, .ex-tab, .back-top, .s-link, .p-link, .hero-chip {
-    cursor: pointer;
+/* UNIVERSAL 100% GUARANTEED NATIVE CURSOR (Zero disappearing bug) */
+*, *::before, *::after, html, body {
+    cursor: auto !important;
+}
+
+a, button, [role="button"], .btn, .f-btn, .sk-tab, .ex-tab, .nav-card, .proj-card, .skill-item, .cert-item, .p-link, .s-link, .back-top, .hero-chip, input[type="submit"], input[type="button"] {
+    cursor: pointer !important;
+}
+
+input, textarea {
+    cursor: text !important;
 }
 
 #cur-dot, #cur-ring, .trail {
     display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
 }
 
 /* ==========================================

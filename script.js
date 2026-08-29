@@ -49,33 +49,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Trail
-    const grays = ['#fff','#ccc','#aaa','#888','#666'];
+    const trailColors = ['#8264ff','#a78bfa','#c4b5fd','#22d3ee','#f472b6'];
     function spawnTrail(x, y) {
         const p = document.createElement('div');
         p.classList.add('trail');
         const sz = Math.random() * 5 + 2;
         const ox = (Math.random() - .5) * 8;
         const oy = (Math.random() - .5) * 8;
-        const c  = grays[Math.floor(Math.random() * grays.length)];
-        p.style.cssText = `left:${x+ox}px;top:${y+oy}px;width:${sz}px;height:${sz}px;background:${c};`;
+        const c  = trailColors[Math.floor(Math.random() * trailColors.length)];
+        p.style.cssText = `left:${x+ox}px;top:${y+oy}px;width:${sz}px;height:${sz}px;background:${c};opacity:0.7;`;
         document.body.appendChild(p);
         setTimeout(() => p.remove(), 700);
     }
 
     // Click burst
+    const burstColors = ['#8264ff','#22d3ee','#f472b6','#a78bfa'];
     function clickBurst(x, y) {
-        for (let i = 0; i < 8; i++) {
+        for (let i = 0; i < 10; i++) {
             const p = document.createElement('div');
-            const angle = (i / 8) * Math.PI * 2;
-            const d = 30 + Math.random() * 25;
-            p.style.cssText = `position:fixed;left:${x}px;top:${y}px;width:5px;height:5px;
-                background:#fff;border-radius:50%;pointer-events:none;z-index:99999;
-                transform:translate(-50%,-50%);`;
+            const angle = (i / 10) * Math.PI * 2;
+            const d = 32 + Math.random() * 28;
+            const c = burstColors[i % burstColors.length];
+            p.style.cssText = `position:fixed;left:${x}px;top:${y}px;width:6px;height:6px;background:${c};border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);box-shadow:0 0 8px ${c};`;
             document.body.appendChild(p);
             p.animate([
-                { transform: 'translate(-50%,-50%) scale(1)', opacity: .7 },
+                { transform: 'translate(-50%,-50%) scale(1)', opacity: 0.85 },
                 { transform: `translate(calc(-50% + ${Math.cos(angle)*d}px), calc(-50% + ${Math.sin(angle)*d}px)) scale(0)`, opacity: 0 }
-            ], { duration: 500, easing: 'cubic-bezier(0.16,1,0.3,1)', fill: 'forwards' })
+            ], { duration: 600, easing: 'cubic-bezier(0.16,1,0.3,1)', fill: 'forwards' })
             .onfinish = () => p.remove();
         }
     }

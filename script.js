@@ -1,11 +1,27 @@
-/* ==========================================================
-   VINCENT PORTFOLIO — ROCK-SOLID STABLE JAVASCRIPT
-   100% Native Cursor Reliability · Ultra Smooth · Zero Glitch
-   ========================================================== */
+/* ==========================================================================
+   VINCENT PORTFOLIO — MASTER JAVASCRIPT
+   Clean · Modular · 60-120 FPS High Performance
+   ==========================================================================
+   TABLE OF CONTENTS:
+   --------------------------------------------------------------------------
+   01. SCROLL PROGRESS INDICATOR
+   02. LIGHTWEIGHT CONSTELLATION BACKGROUND CANVAS
+   03. LIVE HUD STATUS & CLOCK (WIB UTC+7)
+   04. TYPEWRITER HERO PROMPT
+   05. NAVBAR & MOBILE DRAWER CONTROLLER
+   06. SCROLL REVEAL OBSERVER
+   07. HERO STATS COUNTER ANIMATION
+   08. SKILLS PAGE — TABS CONTROLLER
+   09. PROJECTS PAGE — CATEGORY FILTER CONTROLLER
+   10. EXPERIENCE PAGE — TIMELINE TABS CONTROLLER
+   11. CONTACT PAGE — FORM SUBMISSION & OTP VERIFICATION
+   ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. SCROLL PROGRESS
+    /* ======================================================================
+       01. SCROLL PROGRESS INDICATOR
+       ====================================================================== */
     const scrollProgress = document.getElementById('scroll-progress');
     window.addEventListener('scroll', () => {
         if (scrollProgress) {
@@ -15,7 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, { passive: true });
 
-    // 2. LIGHTWEIGHT CLEAN BACKGROUND CANVAS
+    /* ======================================================================
+       02. LIGHTWEIGHT CONSTELLATION BACKGROUND CANVAS
+       ====================================================================== */
     const canvas = document.getElementById('bg-canvas');
     if (canvas) {
         const ctx = canvas.getContext('2d', { alpha: true });
@@ -32,7 +50,12 @@ document.addEventListener('DOMContentLoaded', () => {
             initParticles();
         }, { passive: true });
 
-        const COLORS = ['rgba(0, 240, 255, 0.65)', 'rgba(138, 75, 254, 0.65)', 'rgba(255, 42, 133, 0.55)', 'rgba(0, 245, 155, 0.65)'];
+        const COLORS = [
+            'rgba(0, 240, 255, 0.65)',
+            'rgba(138, 75, 254, 0.65)',
+            'rgba(255, 42, 133, 0.55)',
+            'rgba(0, 245, 155, 0.65)'
+        ];
 
         class Particle {
             constructor() {
@@ -67,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const MAX_DIST_SQ = 125 * 125;
 
-        function loop() {
+        function renderCanvas() {
             ctx.clearRect(0, 0, W, H);
             ctx.lineWidth = 0.7;
 
@@ -93,12 +116,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            requestAnimationFrame(loop);
+            requestAnimationFrame(renderCanvas);
         }
-        requestAnimationFrame(loop);
+        requestAnimationFrame(renderCanvas);
     }
 
-    // 3. LIVE HUD CLOCK
+    /* ======================================================================
+       03. LIVE HUD STATUS & CLOCK (WIB UTC+7)
+       ====================================================================== */
     const hudTime = document.getElementById('hudTime');
     if (hudTime) {
         function updateClock() {
@@ -110,7 +135,9 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(updateClock, 1000);
     }
 
-    // 4. TYPEWRITER EFFECT
+    /* ======================================================================
+       04. TYPEWRITER HERO PROMPT
+       ====================================================================== */
     const typedEl = document.querySelector('.hero-typed');
     if (typedEl) {
         const phrases = [
@@ -148,7 +175,9 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(runType, 500);
     }
 
-    // 5. NAVBAR SCROLL
+    /* ======================================================================
+       05. NAVBAR & MOBILE DRAWER CONTROLLER
+       ====================================================================== */
     const navbar = document.getElementById('navbar');
     const topBtn = document.getElementById('backToTop');
     const scrollHint = document.getElementById('scrollHint');
@@ -166,7 +195,6 @@ document.addEventListener('DOMContentLoaded', () => {
         topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     }
 
-    // Mobile nav
     const navToggle = document.getElementById('navToggle');
     const navMenu   = document.getElementById('navMenu');
     if (navToggle && navMenu) {
@@ -182,7 +210,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 6. SCROLL REVEAL (INTERSECTION OBSERVER)
+    /* ======================================================================
+       06. SCROLL REVEAL OBSERVER
+       ====================================================================== */
     const revElements = document.querySelectorAll('.r-up, .r-left, .r-right');
     if ('IntersectionObserver' in window) {
         const obs = new IntersectionObserver(entries => {
@@ -199,7 +229,9 @@ document.addEventListener('DOMContentLoaded', () => {
         revElements.forEach(el => el.classList.add('on'));
     }, 100);
 
-    // 7. STAT COUNTERS
+    /* ======================================================================
+       07. HERO STATS COUNTER ANIMATION
+       ====================================================================== */
     const counts = document.querySelectorAll('.count[data-n]');
     let hasCounted = false;
     const statsObserver = new IntersectionObserver(entries => {
@@ -226,7 +258,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroStats = document.querySelector('.hero-stats');
     if (heroStats) statsObserver.observe(heroStats);
 
-    // 8. SKILL TABS SYSTEM
+    /* ======================================================================
+       08. SKILLS PAGE — TABS CONTROLLER
+       ====================================================================== */
     document.querySelectorAll('.sk-tab').forEach(tab => {
         tab.addEventListener('click', () => {
             document.querySelectorAll('.sk-tab').forEach(t => t.classList.remove('active'));
@@ -240,7 +274,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 9. PROJECT FILTER SYSTEM
+    /* ======================================================================
+       09. PROJECTS PAGE — CATEGORY FILTER CONTROLLER
+       ====================================================================== */
     document.querySelectorAll('.f-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             document.querySelectorAll('.f-btn').forEach(b => b.classList.remove('active'));
@@ -256,7 +292,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 10. EXPERIENCE TABS SYSTEM
+    /* ======================================================================
+       10. EXPERIENCE PAGE — TIMELINE TABS CONTROLLER
+       ====================================================================== */
     document.querySelectorAll('.ex-tab').forEach(tab => {
         tab.addEventListener('click', () => {
             document.querySelectorAll('.ex-tab').forEach(t => t.classList.remove('active'));
@@ -270,7 +308,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 11. CONTACT FORM
+    /* ======================================================================
+       11. CONTACT PAGE — FORM SUBMISSION & OTP VERIFICATION
+       ====================================================================== */
     const cForm   = document.getElementById('contactForm');
     const oForm   = document.getElementById('otpForm');
     const sentEl  = document.getElementById('otpSentEmail');
